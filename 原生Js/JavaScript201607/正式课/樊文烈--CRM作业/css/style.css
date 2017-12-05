@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul, li {
+    list-style: none;
+}
+a{
+    color: #000;
+    text-decoration: none;
+}
+.box1 {
+    width: 600px;
+    margin: 10px auto;
+    border: 2px solid darkturquoise;
+    text-align: center;
+}
+.box1 .tianjia:hover{
+    color: green;
+    cursor: pointer;
+}
+.boxHead{
+    overflow: hidden;
+}
+.boxHead span {
+    float: left;
+    width: 100px;
+
+    line-height: 30px;
+    font-weight: 700;
+    background: aqua;
+
+}
+.boxList li{
+    overflow: hidden;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #cccccc;
+}
+.boxList span {
+    float: left;
+    width: 100px;
+    line-height: 30px;
+    height: 30px;
+    font-size: 14px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.box2{
+    width: 400px;
+    margin: 20px auto;
+    border: 2px solid darkturquoise;
+}
+.box2 div{
+    width: 400px;
+    margin: 20px 0 20px 50px;
+}
+.box2 div label{
+    display: block;
+}
+.box2 input{
+    outline: none;
+    width: 300px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+#submit{
+    display: block;
+    width: 300px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: darkturquoise;
+}
+#submit:hover{
+    background-color: aqua;
+}

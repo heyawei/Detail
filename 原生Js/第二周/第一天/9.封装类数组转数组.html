@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div>
+    <div>0</div>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+</div>
+<script>
+    var aDiv=document.getElementsByTagName('div');
+    //makeArray:把类数组转数组
+    // 参数：类数组  返回值：数组。可以利用类素组的item具体获取每一个元素
+    function makeArray(arg){
+        var ary=[];
+        try{
+            ary=Array.prototype.slice.call(arg);
+        }catch(e){
+            for(var i=0; i<arg.length; i++){
+                ary.push(arg[i]);
+            }
+        }
+        return ary;
+    }
+ console.log(makeArray(aDiv))
+</script>
+</body>
+</html>

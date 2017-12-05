@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background:lightblue;
+            position: absolute;
+            left: 0;
+            top: 0;
+            overflow: hidden;
+            cursor: move;
+        }
+        img{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"><img src="img/apple_1.jpg"></div>
+<div id="div2" style="top: 150px;left: 300px"><img src="img/apple_2.jpg"></div>
+<div id="div3" style="top: 200px;left: 420px"><img src="img/apple_3.jpg"></div>
+<div id="div4"><img src="img/apple_4.jpg"></div>
+</body>
+<script src="event1.js"></script>
+<script>
+    function down(e) {
+       
+        this.x = this.offsetLeft;
+        this.y = this.offsetTop;
+        this.mx = e.pageX;
+        this.my = e.pageY;
+        if (this.setCapture) {
+            this.setCapture();
+            on(this,'mousemove',move);
+            on(this,'mouseup',up);
+        }else{//直接给move绑定 给document 会是 move方法里的this 会指向document 这样会造成move方法和其他发放里的this 指向不一致
+           // on(document,'mousemove',move);
+           // on(document,'mouseup',up);
+          /*  var that = this ;
+            this.MOVE = function(e){move.call(that,e)}
+            this.UP = function(e){up.call(that,e)}*/
+         /*   function processThis(fn,obj){
+                return function(e){
+                    fn.call(obj,e)
+                }*/
+                Function.prototype.bind;
+                this.MOVE = move.bind(this);
+             this.UP = up.bind(this);
+            on(document,'mousemove',this.MOVE);
+            on(document,'mouseup',this.UP);
+
+            }
+        e.preventDefault();
+
+    }
+    function move(e){
+        this.style.left = this.x+(e.pageX-this.mx)+ 'px';
+        this.style.top = this.y + (e.pageY-this.my)+'px';
+
+    }
+    function up(e) {
+        if (this.releaseCapture) {
+            this.releaseCapture();
+            off(this,'mousemove',move);
+            off(this,'mouseup',up);
+        } else {
+            off(document,"mousemove", this.MOVE);
+            off(document,"mouseup", this.UP);
+        }
+       
+    } 
+	var eles = document.getElementsByTagName('div');
+        for (var i = 0; i < eles.length; i++) {
+            on(eles.item(i), 'mousedown', down);
+        }
+</script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        #wrap{
+            width: 367px;
+            height: 297px;
+            background: url(images/bg-grid.jpg) no-repeat;
+            margin: 100px auto;
+        }
+        #div1{
+            width: 100%;
+            height: 100%;
+            background: red;
+            /*transform: skew(30deg,-30deg);*/
+
+
+        }
+        #div1:hover{
+            /*移动端开发，只需要写下面两种*/
+            /*-webkit-transform: rotate(-45deg);*/
+            /*transform: rotate(-45deg);*/
+            /*transform:translate(100px) rotate(45deg) ;*/
+            transform:rotate(45deg);
+            -webkit-transition:transform 1s;
+            transition:transform 1s;
+            transform-origin: 100px 100px ;
+        }
+
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div id="div1"></div>
+</div>
+</body>
+</html>

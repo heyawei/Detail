@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #board {
+            width: 300px;
+            height: 300px;
+            border: 1px solid seagreen;
+            background-color: #ccc;
+        }
+    </style>
+    <script src="ajax.js"></script>
+    <script>
+        window.onload = function () {
+            var getBottle = document.getElementById('getBottle');
+            var board = document.getElementById('board');
+            getBottle.onclick = function () {
+                ajax({
+                    url: '/getBottle',
+                    method: 'get',
+                    success: function (data) {
+                        board.innerHTML = data;
+                    }, error: function (e) {
+                        board.innerHTML='[error] 重新捞捞看'
+                    }
+                })
+            }
+        }
+    </script>
+</head>
+<body>
+<input id="getBottle" type="button" value="捞捞看">
+
+<div id="board">
+
+</div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin: 0 auto;
+            width: 500px;
+            border: 1px solid #ccc;
+            background-color: aliceblue;
+            text-align: center;
+        }
+
+        .container .sea {
+            width: 400px;
+            margin: 0 auto;
+            height: 200px;
+            background-color: seagreen;
+        }
+
+        .container .sea .bottle_loading {
+            display: block;
+            margin: 0 auto;
+            background: url("img/bottle.png") 0 0 no-repeat;
+            width: 23px;
+            height: 62px;
+        }
+    </style>
+    <script src="ajax.js"></script>
+    <script>
+
+        function BottleService() {
+            // html元素
+            this.node = {
+                // 捡瓶子按钮
+                getBottle: document.getElementById('getBottle'),
+                // 扔瓶子按钮
+                throwBottle: document.getElementById('throwBottle'),
+                // 扔的内容
+                content: document.getElementById('content'),
+                // 大海
+                sea: document.getElementById('sea')
+            };
+            // 调用init方法
+            this.init();
+        }
+        BottleService.prototype = {
+            constructor: BottleService,
+            /**
+             * 注册click事件
+             * */
+            init: function () {
+                var that = this;
+                // 给捡瓶子按钮注册click事件
+                this.node.getBottle.onclick = function () {
+                    // 发送ajax
+                    that.bottleRequest('get', '/getBottle', null,
+                            function (data) {
+                                // 获取服务器返回的内容
+                                var content = data.content;
+                                // 把内容显示到大海中
+                                that.node.sea.innerHTML = content;
+                            });
+                };
+                // 给扔瓶子按钮注册click事件
+                this.node.throwBottle.onclick = function () {
+                    // 获取扔的内容
+                    var value = that.node.content.value;
+                    // 判断内容是否为空
+                    if (!value) {
+                        alert(' 请填写内容');
+                    } else {
+                        // 发送ajax
+                        that.bottleRequest('post', '/throwBottle',
+                                {content: value},
+                                function (data) {
+                                    // 成功的话 把输入框清空
+                                    alert('扔出去了');
+                                    that.node.content.value = '';
+                                });
+                    }
+
+                };
+            },
+            /**
+             * 请求ajax 调用相应ajax接口
+             * @param method http方法
+             * @param url ajax接口
+             * @param data 发送的参数
+             * @param callback 成功回调
+             */
+            bottleRequest: function (method, url, data, callback) {
+                ajax({
+                    url: url,
+                    method: method,
+                    data: data,
+                    success: function (data) {
+                        callback(data);
+                    },
+                    dataType: 'json',
+                    error: function (ex) {
+                        alert('没有捡到瓶子');
+                    }
+                })
+            }
+        };
+
+        window.onload = function () {
+            new BottleService();
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="sea" id="sea">
+        <i class="bottle_loading"></i>
+    </div>
+    <input type="text" id="content" placeholder="请输入您想写的内容">
+    <input type="button" id="throwBottle" value="扔一个">
+    <input type="button" id="getBottle" value="捞捞看">
+
+</div>
+</body>
+</html>

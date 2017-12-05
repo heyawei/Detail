@@ -1,0 +1,103 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训crm-add</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div class="box2">
+    <div>
+        <span>姓名：</span>
+        <input type="text" id="username"/>
+    </div>
+    <div>
+        <span>年龄：</span>
+        <input type="text" id="userage"/>
+    </div>
+    <div>
+        <span>电话：</span>
+        <input type="text" id="userphone"/>
+    </div>
+    <div>
+        <span>地址：</span>
+        <input type="text" id="useraddress"/>
+    </div>
+    <a href="javascript:;" class="submit" id="submit">提交</a>
+</div>
+</body>
+<script charset="utf-8" type="text/javascript" src="Ajax.js"></script>
+<script charset="utf-8" type="text/javascript">
+    var controlRender = (function () {
+        var username = document.getElementById("username"),
+                userage = document.getElementById("userage"),
+                userphone = document.getElementById("userphone"),
+                useraddress = document.getElementById("useraddress"),
+                submit = document.getElementById("submit");
+
+        function bindEvent() {
+            submit.onclick = function () {
+                var obj = {
+                    "name": username.value,
+                    "age": userage.value,
+                    "phone": userphone.value,
+                    "address": useraddress.value
+                }
+                var hash = window.location.hash,
+                        liIndex = hash.substring(1, 2);
+                if (liIndex) {
+                    obj.id= liIndex;
+                    ajax({
+                        url: 'updateInfo',
+                        type: 'post',
+                        data: JSON.stringify(obj),
+                        success: function (jsonData) {
+                            if (jsonData && jsonData['code'] == 0) {
+                                window.location.href = "index.html";
+                            }
+                        }
+                    });
+                }else {
+                    ajax({
+                        url: '/addInfo',
+                        type: 'post',
+                        data: JSON.stringify(obj),
+                        success: function (jsonData) {
+                            if (jsonData && jsonData['code'] == 0) {
+                                window.location.href = "index.html";
+                            }
+                        }
+                    });
+                }
+
+            }
+        }
+
+        return {
+            init: function () {
+//                获取变量的值(截取等号后面的部分)
+                var url = window.location.search,
+                    loc = url.substring(url.lastIndexOf('=') + 1, url.length),
+                    hash = window.location.hash,
+                    liIndex = hash.substring(1, 2);
+                if(loc !== true) {
+                    ajax({
+                        url: "/getInfo?customId="+liIndex,
+                        success: function (jsonData) {
+                            if (jsonData && jsonData["code"] == 0) {
+                                var curData = jsonData.data;
+                                username.value = curData.name;
+                                userage.value = curData.age;
+                                userphone.value = curData.phone;
+                                useraddress.value = curData.address;
+                            }
+                        }
+                    });
+                }
+                bindEvent();
+            }
+        }
+    })();
+    controlRender.init();
+</script>
+</html>

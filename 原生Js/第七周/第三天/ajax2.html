@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript" src="js/jquery-1.11.3.js "></script>
+<!--<script type="text/javascript" src="js/ajax.js "></script>-->
+<script type="text/javascript">
+    $.ajax({
+        url: 'data.json',
+        type:'get',
+        cache: false,
+        async:true,
+        success: function (result) {
+            console.log(result);
+        }
+    });
+
+    $.ajax({
+        url: 'data2.json',
+        dataType: 'json',
+        async: false,
+        success: function (result) {
+            console.log(result);
+        }
+    });
+    ajax({
+        url: './info.txt',
+        method: 'post',
+        headers: {
+            'abcd': '123',
+            'Content-type': 'application/x-www-form-urlencoded'
+        },
+        async: true,
+        data: {a: 1, b: 2},// a=1&b=2
+        success: function (data) {
+            console.log(data)
+        },
+        error: function (ex) {
+            console.error(ex);
+        },
+        cache: false,
+        dataType: 'text'
+    })
+</script>
+</body>
+</html>

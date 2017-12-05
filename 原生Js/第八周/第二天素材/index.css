@@ -1,0 +1,140 @@
+.header{
+    width: 100%;
+    height: 580px;
+    position: relative;
+}
+.header .nav{
+    width: 100%;
+    height: 89px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    background: url("")repeat-x;
+}
+.banner{
+    width: 100%;
+    height: 580px;
+    position: relative;
+}
+.warp{
+    width: 100%;
+    overflow: hidden;
+}
+.warp .logo{
+    margin-top: 18px;
+    float: left;
+}
+.warp ul{
+    float: right;
+}
+.warp ul li{
+    float: left;
+    line-height: 89px;
+}
+.warp ul li a{
+    display: block;
+    padding: 0 30px;
+    font-size: 18px;
+    color: #fff;
+    position: relative;
+}
+
+@media all and(min-width: 1000px){/*屏幕大于1000时，宽度1000 并且居中显示*/
+    .warp{
+        width: 1000px;
+        margin: 0 auto;
+    }
+}
+.sideA{
+    width: 100%;
+    height: 100%;
+    background:#183e84 ;
+}
+.sideA dl{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.sideA dl dt{
+    position: absolute;
+    left: -40px;
+    top: 0;
+}
+.sideA dl dt.one{
+    width: 394px;
+    height: 162px;
+    position: absolute;
+    left: 50%;
+    top: 228px;
+}
+.sideA dl dt.other{
+    position: absolute;
+    top: 415px;
+    left: 50%;
+    font-size: 18px;
+    color: #fff;
+}
+.sideB{
+    width: 100%;
+    height: 100%;
+    background: #ff6a00;
+    position: relative;
+    display: none;
+}
+.sideImg1,.sideImg2{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+}
+.sideImg1{
+    top: 100px;
+}
+.sideImg2{
+    bottom: 45px;
+}
+.prev,.next{
+    width: 44px;
+    height: 44px;
+    position: absolute;
+    top: 50%;
+    margin-top: -22px;
+    z-index: 1111;
+}
+.prev{
+    left: 70px;
+}
+.next{
+    right: 70px;
+}
+.list{
+    margin-top: 30px;
+}
+.list ul{
+    width: 100%;
+    text-align: center;
+}
+.list ul li{
+    display: inline-block;
+    width: 23%;
+    position: relative;
+}
+.list ul li{
+    display: block;
+
+    margin: 0 auto;
+}
+.list ul li span.img{
+    background-position: 0 -126px;
+    width: 152px;
+    height: 124px;
+}
+.list ul li span.img2{
+    background-position:-300px -128px;
+}
+.list ul li span.img3{
+    background-position: -604px -128px;
+}
+.list ul li span.img4{
+
+}

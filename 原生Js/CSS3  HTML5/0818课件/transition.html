@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .box{
+            background: #2192bc;
+            padding: 200px 0;
+        }
+        .boxImg{
+            display: block;
+            width: 140px;
+            height: 140px;
+            background:#2c9dc4 url(../images/img1.png) no-repeat center center;
+            margin: 0 auto;
+            border-radius: 50%;
+            box-shadow: 0 0 0 30px transparent;
+            -webkit-transition: 1s ;
+            -moz-transition: 1s ;
+            -ms-transition: 1s ;
+            -o-transition: 1s ;
+            transition: 1s ;
+        }
+        .boxImg:hover{
+            box-shadow: 0 0 0  0 white;
+        }
+    </style>
+</head>
+<body>
+<!--
+1.哪个属性发生变化   box-shadow
+2.属性值的起始值和结束值
+          起始值       结束值
+扩展半径    30px          0px
+颜色      transparent     white
+
+-->
+<div class="box">
+    <div class="boxImg"></div>
+</div>
+</body>
+</html>

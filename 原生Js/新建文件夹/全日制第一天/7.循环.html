@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box{
+            width:200px;
+            height: 200px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -100px;
+            margin-left: -100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+<script>
+    //6.中已经说了for循环和for in 循环
+    var ary=[123,'zhufeng',true,function(){
+        alert('789')
+    }];
+    var i=0;//定义
+    while(i<ary.length){//条件
+        console.log(ary[i]);//执行语句
+        i++;//自增
+    }
+</script>
+</body>
+</html>

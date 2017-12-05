@@ -1,0 +1,23 @@
+body{width:100%;min-width:320px;/*border:1px solid green;*/}
+.all_con{margin-top:5px;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td,span{padding:0;margin:0;}
+/*���*/
+table{border-collapse:collapse;border-spacing:0;}
+.con_tab thead{border-bottom: 3px solid #38384F;}
+.con_tab tbody tr{border-bottom: 2px solid #38384F}
+.con_tab thead td{width:25%;height:18px;line-height:18px;text-align: center;  color:#74808A;}
+.con_tab{width:95%;height:auto;margin:0% 2%;font-size:12px;}
+.con_tab tbody,.con_tab tbody tr{width:100%;height:40px;text-align:center;padding:0px 5px;}
+.con_tab tbody tr td{width:18%;color:#7093db;}
+.con_all {
+	position: absolute;
+    top: 50px;
+	width:100%;
+}
+#count-top{
+    width:100%;
+    height:350px;
+   /*
+ margin-top:2px;
+*/
+}

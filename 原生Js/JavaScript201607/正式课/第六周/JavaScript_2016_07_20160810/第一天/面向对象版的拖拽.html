@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+ div{ width:100px; height:100px; background:lightBlue; position:absolute; left:0; top:0; overflow:hidden; cursor:move; -webkit-user-select:none; }
+ img{ width:100px; height:100px; }
+</style>
+</head>
+<body>
+<div id="div1"><img src="img/1.png" ></div>
+<div id="div2" style="top:150px; left:150px;"><img src="img/2.png" ></div>
+<div id="div3" style="top:300px; left:300px;"><img src="img/3.png" ></div>
+</body>
+</html>
+<script src="event1.js"></script>
+<script>
+//面向对象版的拖拽：
+//产品
+//类、构造方法，原型方法
+//类的实例是上下文，一定充分理解上下文的概念：承载当前所有的行为的发生和所有的数据（属性）的载体，上下文就是this,也是当前类的实例
+//面向对象是看待世界的一种思想
+
+function Drag(ele){//初始化
+	this.x=null;
+	this.y=null;
+	this.mx=null;
+	this.my=null;
+	//可以把以上的x,y,mx,my看成是这个实例的公有属性
+	//ele是什么呢？可以看成是私有的，它不属性这个类，也不是实例上的属性，只是构造函数里的一个私有变量
+	this.element=ele;//把私有作用域里的值，转存到公有属性上，以便类上的其它方法也可以操作
+	//on(this.element,"mousedown",this.down);//这样会导致事件触发运行this.down的时候，down里的this就是被拖拽的元素了（事件绑定原则就是这样规定的），所以要用this.down做如下处理
+	
+	this.DOWN=processThis(this.down,this);
+	this.MOVE=processThis(this.move,this);
+	this.UP=processThis(this.up,this);
+	
+	on(this.element,"mousedown",this.DOWN);
+	
+}
+document.body.offsetParent;//为什么这个是null
+document.body.offsetparent;//而这个是undefined呢？
+Drag.prototype.down=function(e){
+	this.mx=e.pageX;
+	this.my=e.pageY;
+	this.x=this.element.offsetLeft;
+	this.y=this.element.offsetTop;
+	if(this.element.setCapture){
+		this.element.setCapture();
+		on(this.element,"mousemove",this.MOVE);
+		on(this.element,"mouseup",this.UP);
+	}else{
+		on(document,"mousemove",this.MOVE);
+		on(document,"mouseup",this.UP);
+	}
+	e.preventDefault();
+}
+Drag.prototype.move=function(e){
+	this.element.style.left=this.x+(e.pageX-this.mx)+"px";
+	this.element.style.top=this.y+(e.pageY-this.my)+"px";
+	
+}
+Drag.prototype.up=function(e){
+	if(this.element.releaseCapture){
+		off(this.element,"mousemove",this.MOVE);
+		off(this.element,"mouseup",this.UP)
+	}else{
+		off(document,"mousemove",this.MOVE);
+		off(document,"mouseup",this.UP);
+	}
+	
+}
+var obj1=new Drag(div1);
+//会把所有的和拖拽相关的行为和数据都保存在obj1这个对象上，我们在用面向对象的方式来编程的时候，也应该用当前的实例来保存所有行为和数据
+//我们原来的时候，this是指的ele（被拖拽的元素），是因为要遵循事件绑定的原则。现在用面向对象的方式来编程的时候，就不必再用事件绑定的原则了，而用本身的原则：this就是在类的每个方法里，都要指向类的实例。
+//原则：this都要指向类的实例，如果和这个原则冲突，强制执行这个原则。
+
+//当new运算符在运算一个类的时候，浏览器会做那几件事？
+//（当用new去创建一个类的实例的时候，系统做了几件事）
+//1、以Drag为类，创建一个Drag类的实例（就是识别实例的作用），并且把这个实例返回
+//2、这个实例上这会就具备了__proto__属性，指向Drag.prototype，也就说这会实例上已经就具备的类上的方法了
+//3、以创建的这个实例为上下文，把Drag方法当成一个普通方法来执行。构造函数有两种身份：一是类的标识，二是普通的方法还可以自动运行
+var obj2=new Drag(div2);
+new Drag(div3);
+
+
+
+</script>

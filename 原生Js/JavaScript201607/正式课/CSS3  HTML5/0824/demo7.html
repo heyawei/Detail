@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        #div1{
+            width: 100px;
+            height: 80px;
+            background: radial-gradient(closest-side at 10px 10px ,red,blue,yellow,green);
+            background: -webkit-radial-gradient(closest-side at 10px 10px ,red,blue,yellow,green);
+        }
+        #div2{
+            width: 100px;
+            height: 80px;
+            background: radial-gradient(closest-corner at 10px 10px  ,red,blue,yellow,green);
+            background: -webkit-radial-gradient(closest-corner at 10px 10px  ,red,blue,yellow,green);
+        }
+        #div3{
+            width: 100px;
+            height: 80px;
+            background: radial-gradient(farthest-side at 10px 10px ,red,blue,yellow,green);
+            background: -webkit-radial-gradient(farthest-side at 10px 10px  ,red,blue,yellow,green);
+        }
+        #div4{
+            width: 100px;
+            height: 80px;
+            background: radial-gradient(farthest-corner at 10px 10px  ,red,blue,yellow,green);
+            background: -webkit-radial-gradient(farthest-corner at 10px 10px  ,red,blue,yellow,green);
+        }
+
+        #div5{
+            width: 100px;
+            height: 80px;
+            background: radial-gradient( 50px 20px at center center ,red,blue,yellow,green);
+            background: -webkit-radial-gradient( 50px 20px at center center  ,red,blue,yellow,green);
+        }
+
+        #div5{
+            width: 200px;
+            height: 100px;
+            /*background: radial-gradient( circle ,red 0%,blue 25%,yellow 50%,green 100%);*/
+            /*background: -webkit-radial-gradient( circle ,red 0%,blue 25%,yellow 50%,green 100%);*/
+            background: repeating-radial-gradient( circle ,red 10px,blue 20px,yellow 30px,green 40px);
+       background: -webkit-repeating-radial-gradient( circle ,red 10px,blue 20px,yellow 30px,green 40px)
+    }
+
+</style>
+</head>
+<body>
+<div id="div1"></div>
+<div id="div2"></div>
+<div id="div3"></div>
+<div id="div4"></div>
+<div id="div5"></div>
+<div id="div6"></div>
+
+
+</body>
+</html>

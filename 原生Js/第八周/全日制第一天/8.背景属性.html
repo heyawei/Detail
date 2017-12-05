@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        body{
+            /*background: url("img/baby.jpg") no-repeat;*/
+            /*background-attachment: fixed;*/
+        }
+        .div1{
+          width: 300px;
+            height: 300px;
+            border:30px solid rgba(0,0,0,0.5);
+            padding: 20px;
+         /* background: url(img/hs.jpg) no-repeat 0 0;*/
+            /*/!*background-origin:content-box ;*!/*/
+            /*background-clip:content-box ;*/
+            font-size: 60px;
+            color: transparent;/*一定要设置透明*/
+            -webkit-background-clip:text;
+        }
+        .div2{
+            width: 700px;
+            height: 700px;
+            border:1px solid rgba(0,0,0,0.5);
+            padding: 20px;
+            background: url(img/baby.jpg) no-repeat 0 0;
+            background-size:cover;
+            /*-webkit-filter: saturate(4);*/
+            -webkit-mask-image: url(img/mask.png);
+            -webkit-mask-repeat:repeat;
+            -webkit-mask-position: 10px 10px;
+
+        }
+    </style>
+</head>
+<body>
+<div class="div1">珠峰培训</div>
+<div class="div2"></div>
+</body>
+</html>

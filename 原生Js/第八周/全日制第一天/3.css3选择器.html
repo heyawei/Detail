@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+            width: 400px;
+            margin: 100px auto;
+        }
+        ul li{
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            background: orange;
+            text-align: center;
+            font-size: 16px;
+            color: #fff;
+            margin: 10px;
+        }
+        /*.a1+li{/!*类名a1相邻的弟弟节点*!/
+
+        }
+        .a1~li{/!*类名a1所有的弟弟节点*!/
+            background: green;
+        }*/
+        ul :nth-child(1){/*ul下的第一个子元素*/
+           /*background: pink;*/
+        }
+        ul :nth-of-type(1){/*ul下的同种类型（标记名相同）的第一个子元素*/
+            /*background: green;*/
+        }
+        ul :first-child{/*第一个子元素*/
+
+        }
+        ul :first-of-type{/*同类型的第一个子元素*/
+
+        }
+        ul li:nth-child(3){/*先找到第三个子元素，看这个子元素的标记名是否是li*/
+            /*background: green;*/
+        }
+        ul li:nth-of-type(3){/*从所有的li中找到第三个li标签*/
+            /*background: green;*/
+        }
+        ul li:nth-child(2n){/*n从0开始设置 偶数元素 0 ,2,4....*/
+            /*background: purple;*/
+        }
+        ul li:nth-child(2n+1){/*奇数元素 1,3,5,7....*/
+            /*background: deepskyblue;*/
+        }
+        ul li:nth-child(3n){
+            background: palegreen;
+        }
+        ul li:nth-child(3n+1){
+            background: pink;
+        }
+        div :only-of-type{
+           /*background: blue;*/
+        }
+        div:empty{
+           height: 300px;
+            /*background: pink;*/
+        }
+        /*ul li:not(:last-child){*/
+           /*border-radius: 50%;*/
+        /*}*/
+        ul li:not(:nth-child(2)){
+
+        }
+        ul li[class$="zf"]{
+            border-radius: 50%;
+        }
+        #div1{
+            height: 300px;
+            background: palegreen;
+        }
+        #div2{
+            margin-top: 300px;
+            height: 500px;
+            background: red;
+        }
+        #div2:target{
+            background: black;
+        }
+        #div1:target{
+            background: yellow;
+        }
+        #div3,#div4{
+            display: none;
+            height: 200px;
+            background: pink;
+        }
+        #div4{
+            background: orange;
+        }
+        #div3:target,#div4:target{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+<ul>
+    <!--<p>1111</p>-->
+    <li>1</li>
+    <li class="a1 zf zfpx">2</li>
+    <li class="zfpx aa">3</li>
+    <li class="zf-aa b1">4</li>
+    <li class="zf">5</li>
+    <li class="zpft">6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+<div id="div1">
+    <p>111</p>
+    <span>222</span>
+</div>
+<div id="div2">
+    <p>33333</p>
+</div>
+<div></div>
+<div>
+
+</div>
+<div><!--1111--></div>
+<div>
+    这里是文本内容区
+</div>
+<a href="#div3">链接到相应的元素</a>
+<a href="#div4">链接到相应的元素</a>
+<div id="div3">div3</div>
+<div id="div4">div4</div>
+
+</body>
+</html>

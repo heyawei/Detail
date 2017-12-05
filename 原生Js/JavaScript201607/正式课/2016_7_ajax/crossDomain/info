@@ -1,0 +1,76 @@
+跨域
+方案 域名 端口
+
+同域请求:请求的url中域(方案 域名 端口)和当前的宿主页面的域(方案 域名 端口)相同.这样的请求就叫做同域请求.
+
+跨域请求:请求的url中域(方案 域名 端口)和当前的宿主页面的域(方案 域名 端口)有任何一个不相同,这样的请求就叫做跨域请求.
+
+
+www.zhuafeng.cn/index.html -> https://www.zhufeng.cn/info
+pan.baidu.com  www.baidu.com
+
+同源策略
+它是一种安全限制,限制了js可以在哪些地方被禁止执行.是浏览器厂商为了web安全,强制添加一种安全限制.
+
+同域请求不会触发同源策略,而跨域请求有很大几率触发同源策略.
+
+如果想要成功完成跨域操作,第一件事要考虑的就是如何绕过同源策略,来达到跨域请求的目的.
+
+以下html元素不收不同策略的限制.
+script
+img
+iframe
+
+script是如何实现跨域请求?
+1 在script请求之前先定义一个全局函数
+2 把全局函数名称和server指定的请求参数(事例中的name) 一起拼接到script的url中,发起请求.
+3 服务器收到请求之后获取指定的请求参数的值(?name=aaa里的aaa),获取到之后,和待返回的数据拼接到一起.格式如 "aaa + ( + 将要返回的数据 + )".返回给浏览器
+4 浏览器收到服务器返回的数据并执行.由于在发送之前已经定义过要执行的这个方法.所以就会该方法.
+5 该方法被执行,执行相应逻辑
+
+为什么叫jsonp?
+jsonp并不是一个新技术,而是利用已有的知识完成一个跨域请求.
+jsonp名称由来是根据服务器返回的数据格式产生的. function name + jsonstring(事例中aaa("hello world"))
+也叫 jsonstring padding function name => jsonstring padding =>
+json padding => jsonp
+
+jsonp的注意事项:
+1 因为html中所有通过src href还有地址栏请求的资源都是通过http get方法去请求的.而jsonp是通过script的src属性去请求的跨域服务器.所以josnp只能是get方法.只要http get方法有的特点,jsonp全有.
+2 发送jsonp请求之前,必须在全局环境下定义一个全局函数.目的是处理跨域服务器返回的数据.
+3 跨域服务器必须提供一个请求参数(事例中的name),该请求参数是用来拼接返回数据使用的.该请求参数有一个官方名称叫jsonpcallback
+4 服务器返回的数据格式必须满足 "function name ( jsonString )" 这种格式.
+
+只要是jsonp接口必须满足四个注意事项,否则不是jsonp接口.就无法完成跨域请求.
+
+跨域资源共享
+cross origin resource sharing => CORS
+
+该方法使用浏览器提供的API实现的跨域请求.
+
+兼容性 ie8+
+
+标准浏览器 ie10+ chrome firefox safari opera
+XMLHttpRequest
+ie8-ie9
+XDomainRequest
+
+跨域资源共享需要服务器添加响应首部
+"Access-Control-Allow-Origin",该首部有两种类型值"*","指定域"
+
+*表示任何网站都可以请求该接口
+指定域,只有指定域才可以访问该接口
+
+
+jsonp和cors的相同点与不同点:
+相同点:
+1 都是解决接口级别的跨域请求
+2 都需server进行配合
+不同点:
+1 实现方式,jsonp有script实现而cors由浏览器提供的API实现
+2 兼容性,jsonp没有兼容性而cors则是ie8+
+3 http方法使用范围:jsonp只能使用get方法而cors则是get post delete head put都可以使用
+
+jsonp为什么不是ajax?
+以为ajax的实现是通过浏览器提供的API来完成相应的功能,而jsonp并不是使用API,是使用script来实现的.所以jsonp不是ajax.
+
+

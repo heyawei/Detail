@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>jquery实现cors</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                method: 'get',
+                url: 'http://localhost:12345/cors',
+                // 使用cors必须加上该参数
+                crossDomain: true,
+                success: function (data) {
+                    console.log(data);
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+
+</body>
+</html>

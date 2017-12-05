@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>-->
+</head>
+<body>
+<!--<iframe src="http://localhost:63342/2016_7_ajax/crossDomain/inner.html"></iframe>-->
+
+<!--<iframe src="http://www.zhufengpeixun.cn"></iframe>-->
+<script>
+    var xhr = new XMLHttpRequest();
+    xhr.open('get', 'http://localhost:12345/getBottle');
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.responseText)
+        }
+    };
+    xhr.send();
+    //  case 1:  console.log(aaa);
+
+    // 在请求之前先在全局环境注册一个aaa函数
+    function aaa(data) {
+        console.log(data);
+    }
+</script>
+<!--<script onload="javascript:console.log(aaa);"  src="http://localhost:12345/sameOrigin?name=aaa"></script>-->
+<script src="http://localhost:12345/sameOrigin?name=aaa"></script>
+<script>
+    // /sameOrigin返回 var a="hello world"
+    // 由于script的特点 会把加载过来的数据当成js脚本去执行
+    // 相当于eval('var a="hello world"')
+
+    var a = 1;
+    var b = 2;
+    var xxx = 3;
+    //    console.log(a);
+</script>
+当前页面的域为http://localhost:63342
+</body>
+</html>

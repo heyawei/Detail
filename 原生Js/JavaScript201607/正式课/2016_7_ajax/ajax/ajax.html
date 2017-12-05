@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        // step 1
+        var xhr = new XMLHttpRequest();
+        // step 2
+        xhr.open('get', './info.txt', false, 'zhufengpeixun', '12345');
+
+        // 自定义请求首部
+        xhr.setRequestHeader('zhufeng', 'hahaha');
+        xhr.setRequestHeader('zhufeng', 'heiheihei');
+
+        console.log('before send');
+        // step 4
+        setTimeout(function () {
+            xhr.send();
+        }, 0);
+
+        console.log('after send');
+        // step 3
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === xhr.DONE && xhr.status === 200) {
+//                console.log(xhr.responseText);
+                console.log('received response');
+
+                //获取http响应首部
+                console.log(new Date(xhr.getResponseHeader('date')));
+                // 获取所有的响应首部
+                console.log(xhr.getAllResponseHeaders());
+            }
+        };
+    </script>
+</head>
+<body>
+
+</body>
+</html>

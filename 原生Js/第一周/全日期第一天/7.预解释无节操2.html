@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //此题只在IE下弹
+    f=function(){return true};
+    g=function(){return false};
+    (function(){
+        if(g()&&[]==![]){//无论条件是否成立，都会进行预解释
+            f=function(){return false;};
+            function g(){return true;}
+        }
+    })();
+    alert(f());
+    alert(g());
+</script>
+</body>
+</html>

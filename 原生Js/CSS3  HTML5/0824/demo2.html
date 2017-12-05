@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="html5.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<p> 我们在<mark>每天</mark>早上 <time>9:00</time> 开始营业。 </p>参数
+<p> 我在 <time datetime='2016-02-14T20:00Z' pudate>这一天</time> 发布了一篇文章。 </p>
+<!--
+T是时间和日期的分隔符
+Z是标准时间（UTC）
+pudate 以datetime值为发布日期
+-->
+<!--
+<br> 换行
+<wbr>软换行  如果在一行能显示完整，则不换行，如果显示不下，则换行
+-->
+
+<p style="width: 190px;border:1px solid red">奇迹是努力的代名词，只要<wbr>有行动，有努力，必须<wbr>绽放出美丽的人生！</p>
+
+<input type="text" list="shopCar"/>
+<datalist id="shopCar">
+    <option value="111"></option>
+    <option value="12306"></option>
+    <option value="123"></option>
+    <option value="abc"></option>
+    <option value="aaa"></option>
+</datalist>
+
+<details open>
+    <summary>标题</summary>
+    <ul>
+        <li>
+           <details>
+               <summary>标题2</summary>
+               <ul>
+                   <li>11111</li>
+                   <li>2222</li>
+               </ul>
+           </details>
+        </li>
+        <li>2222</li>
+        <li>3333</li>
+    </ul>
+</details>
+<form action=""  oninput="test.value = a.value">
+    <input type="number" id="a"/>
+    <output name="x" for="a" id="test"></output>
+</form>
+</body>
+</html>

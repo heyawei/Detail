@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!--width->layout viewport 大部分设备上默认值是980 document.documentElement.clientWidth
+    device-width设备宽度
+    initial-scale初始缩放值
+    user-scalable是否运行用户缩放页面yes/no
+    maximum-scale 最大缩放值
+    minimum-scale 最小缩放值
+    -->
+    <style>
+       .wrap{
+           width: 200px;
+           height: 200px;
+           background:red;
+           margin: 30px auto;
+       }
+        @media all and (max-width:640px){/*显示区域宽度小于等于640的时候条件成立*/
+            .wrap{
+                background: green;
+            }
+        /*all所有的设备
+        screen显示器
+        print打印机
+        width:显示区域宽度
+        height：显示区域高度
+        device：*/
+        }
+        @media screen and(min-width: 320px)and (max-width: 414px){/*设置一个区间显示区域宽度320到414之间条件才成立*/
+            .wrap{
+                width: 400px;
+            }
+        }
+        @media screen and (orientation: portrait){/*竖向*/
+            .wrap{
+                background: black;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="wrap"></div>
+</body>
+</html>
+<script>
+    /*
+    * 现存的三种布局方式
+    * 1固定布局
+    * 2流式布局
+    * 3弹性布局
+    * 流式布局或弹性布局或许是响应式布局的更好方式。*/
+</script>

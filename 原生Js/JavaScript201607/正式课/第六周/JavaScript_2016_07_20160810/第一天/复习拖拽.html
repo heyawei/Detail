@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+ div{ width:100px; height:100px; background:lightBlue; position:absolute; left:0; top:0; overflow:hidden; cursor:move; -webkit-user-select:none; }
+ img{ width:100px; height:100px; }
+</style>
+</head>
+<body>
+<div id="div1"><img src="img/1.png" ></div>
+<div id="div2" style="top:150px; left:150px;"><img src="img/2.png" ></div>
+<div id="div3" style="top:300px; left:300px;"><img src="img/3.png" ></div>
+</body>
+</html>
+<script src="event1.js"></script>
+<script>
+function down(e){//准备拖拽
+	this.x=this.offsetLeft;
+	this.y=this.offsetTop;
+	this.mx=e.pageX;
+	this.my=e.pageY;
+	
+	if(this.setCapture){
+		this.setCapture();//IE浏览器中专门用来处理mousemove事件可能丢失鼠标焦点的问题的
+		on(this,"mousemove",move);
+		on(this,"mouseup",up);
+	}else{
+		//如果直接把move方法绑定给document的mousemove事件，move方法里的this会指向document,这样会造成move方法和其它（down、up）方法里的this指向不一致
+		//为什么要强调down,move,up这三个方法里的this要指向同一个元素呢？因为我们把方法执行过程中用到的一些值保存到这个元素上了，为了方便读写这些数据，所以才要保持一致的元素
+		//on(document,"mousemove",move);
+		//on(document,"mouseup",up);
+		/*
+		var that=this;
+		this.MOVE=function(e){move.call(that,e)}
+		this.UP=function(e){up.call(that,e)}
+		*/
+		/*
+		//使fn的功能不会变化，但是this会被强制指向obj
+		function processThis(fn,obj){
+			return function(e){fn.call(obj,e)}	
+		}
+		this.MOVE=processThis(move,this);
+		this.UP=processThis(up,this);
+		*/
+		Function.prototype.bind;//此方法的功能和processThis一样，已经在es5中被内置到了Function类中
+		this.MOVE=move.bind(this);
+		this.UP=up.bind(this);
+		on(document,"mousemove",this.MOVE);
+		on(document,"mouseup",this.UP);		
+		
+	}
+	e.preventDefault();
+	
+}
+function move(e){//进行拖拽
+	this.style.left=this.x+(e.pageX-this.mx)+"px";
+	this.style.top=this.y+(e.pageY-this.my)+"px";
+	
+}
+
+function up(e){//结束拖拽
+	if(this.releaseCapture){
+		this.releaseCapture();
+		off(this,"mousemove",move);
+		off(this,"mouseup",up);
+	}else{
+		off(document,"mousemove",this.MOVE);
+		off(document,"mouseup",this.UP);
+	}
+	
+}
+
+var eles=document.getElementsByTagName("div");
+for(var i=0;i<eles.length;i++){
+	on(eles[i],"mousedown",down);	
+}
+
+
+</script>

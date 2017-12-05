@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!--<style>
+     /*  div{
+           width: 200px;
+           height: 200px;
+           background: red;
+           transition:all 1s linear 0s;
+       }*/
+       /* div:hover{
+            width: 400px;
+            -webkit-transition-property:width;!*谷歌*!
+            -moz-transition-property: width;!*火狐*!
+            -ms-transition-property: width;!*IE*!
+            -o-transition-property: width;!*欧朋*!
+            transition-property: width;!*标准*!
+
+            transition-duration: 1s;!*运行时间*!
+            transition-timing-function:ease-in-out;!*运行速度*!
+            transition-delay:1s;!*延迟时间*!
+        }*/
+       /* div:hover{
+            width: 400px;
+            height:400px;*/
+            /*-webkit-webkit-transition:width 2s linear 0s ,height 2s ease;
+            -moz-webkit-transition:width 2s linear 0s ,height 2s ease ;
+            -ms-webkit-transition:width 2s linear 0s ,height 2s ease ;
+            -o-webkit-transition:width 2s linear 0s ,height 2s ease ;
+            webkit-transition: width 2s linear 0s, height 2s ease ;*/
+      /*  }*/
+    </style>-->
+    <style>
+       /* div{
+            width: 200px;
+            height: 200px;
+            background: red;
+            margin: 100px auto;
+        }
+        div:hover{
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg) ;
+            -webkit-transition:transform 1s;
+            transition:transform 1s ;
+        }*/
+    div{
+        width: 400px;
+        height: 400px;
+        margin: 100px auto;
+        overflow: hidden;
+    }
+     img{
+         display: block;
+         width: 400px;
+         height: 400px;
+         background-size: cover;
+         transform: scale(1);
+         transition: transform 1s ;
+     }
+        img:hover{
+            transform: scale(2);
+        }
+    </style>
+</head>
+<body>
+<div>
+    <img src="images/1.jpg" alt="">
+</div>
+</body>
+</html>

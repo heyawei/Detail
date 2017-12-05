@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="ajax.js"></script>
+    <script>
+        ajax({
+            // ajax请求地址
+            url: './ajax.js',
+            // http方法
+            method: 'get',
+            // 发送的参数
+            data: {a: 1, b: 2, '你好': "珠峰"},
+            // 是否为异步请求
+            async: true,
+            // 是否缓存请求
+            cache: false,
+            // 格式化服务器返回的数据
+            dataType: 'text',
+            // 自定义请求首部
+            headers: {'zidingyi': 'header'},
+            // ajax成功回调
+            success: function (data) {
+                console.log(data)
+            },
+            // ajax失败回调
+            error: function (e) {
+                console.error(e);
+            }
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

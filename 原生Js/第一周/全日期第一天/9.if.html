@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var n=8;//教训：不要再条件判断语句中写函数的定义阶段：因为他在不同浏览器下预解释不同；
+    if(n%2==0){
+        function fn(){
+            alert('偶数')
+        }
+        fn();
+    }else{
+        function fn(){
+            alert('奇数')
+        }
+        fn();
+    }
+</script>
+</body>
+</html>

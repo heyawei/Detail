@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 60px;
+            height: 60px;
+            position: relative;
+            top: 10px;
+            left: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div>◇</div>
+</body>
+</html>
+<script charset="utf-8" type="text/template" id="menuTemplate">
+    <%for(var i=0;i<ary.lenght;i++){%><%var cur=ary[i];%>
+<li>
+    <a href="#<%=cur.HASH%>" class="bg" data-id="<%=cur.columnId%>"><%=cur.title%>
+        <i>
+            <span class="over"></span>
+            <span></span>
+        </i>
+    </a>
+</li>
+</script>

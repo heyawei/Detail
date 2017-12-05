@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .wrap{
+            perspective: 300px;/*视距*/
+            perspective-origin: center;/*透视点位置*/
+        }
+        .stage{
+            width: 200px;
+            height: 200px;
+            border:1px solid #ccc;
+            margin: 100px auto;
+            transform-style: preserve-3d;/*在3D空间里展示*/
+        }
+        .item{
+            width: 100%;
+            height: 100%;
+            background: red;
+            transition: 1s;
+        }
+        .stage:hover .item{
+            /*transform: scaleZ(2) rotateX(45deg);*/
+            /*transform:scale3d(1,1,2) rotateX(45deg);*/
+            transform:rotate3d(0,0,1,45deg);
+            transform:rotateZ(45deg);
+        }
+    </style>
+    <!--
+    perspective:指用户到物体z轴平面的距离
+    perspective作用在父标签或者祖先标签
+    transform:perspective(2000px)  直接作用在变形元素上
+    scaleZ()不能单独使用，必须配合着其他变形方法一起使用才能起作用
+    rotate3d(rx,ry,rz)
+    rotateX()前后翻转 正：往前翻 负：往后翻
+    rotateY()左右翻转 正：往右翻 负：往左翻
+    rotateZ()的效果跟2D方法rotate()效果一样，但是这个是在3D空间的Z轴上旋转
+    -->
+</head>
+<body>
+<div class="wrap">
+<div class="stage">
+    <div class="item"></div>
+</div>
+</div>
+</body>
+</html>

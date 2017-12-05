@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+  /*  var name='zhufeng';
+    var age=8;
+    var person1={
+        name:'hello',
+        age:18,
+        showName:function(){
+            console.log(this.name)
+        }
+    };
+   person1.showName();
+    var person2={
+        name:'liying',
+        age:20,
+        showName:function(){
+            alert(this.name)
+        }
+    };
+    person2.showName();*/
+   /* function fun(){
+        add();
+        function add(){
+            return '1';
+            console.log('asd')
+        };
+        return 'ok'
+    }
+    console.log(fun())*/
+    function fun(){
+        var n=10;
+        add();
+        function add(){
+            ++n;
+            return '1';
+        };
+        return n;
+    }
+    console.log(fun())
+</script>
+</body>
+</html>

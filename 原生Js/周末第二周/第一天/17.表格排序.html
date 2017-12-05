@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .tab{
+            width: 600px;
+            margin:50px auto;
+            border:4px solid lightgreen;
+            box-shadow: 0 0 10px darkgreen;
+            padding:10px;
+            border-radius: 10px;
+        }
+        .tab thead tr{
+            height: 40px;
+            line-height: 40px;
+            background: darkgreen;
+            color: white;
+            text-align: center;
+        }
+        .tab tbody tr{
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+        }
+        .tab tbody tr.bg0{
+            background: lightcyan;
+        }
+        .tab tbody tr.bg1{
+            background: lightgoldenrodyellow;
+        }
+        .cursor{
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+<table id="tab" class="tab" cellpadding="0" cellspacing="0">
+    <thead class="tHead">
+        <tr>
+            <th class="cursor">姓名</th>
+            <th class="cursor">年龄</th>
+            <th class="cursor">分数</th>
+            <th class="cursor">性别</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!--<tr class="bg0">
+            <td>赵老大</td>
+            <td>45</td>
+            <td>89</td>
+            <td>0</td>
+        </tr>
+        <tr class="bg1">
+            <td>赵老大</td>
+            <td>45</td>
+            <td>89</td>
+            <td>0</td>
+        </tr>-->
+    </tbody>
+</table>
+<script type="text/javascript" src="utils.js"></script>
+<script src="json1.js"></script>
+<!--<script type="text/javascript" src="表格排序.js"></script>-->
+
+
+</body>
+</html>
+<script>
+   /*var tab1=new Banner({
+    id:'tab',
+    url:'data.txt'
+    });*/
+   /*var tab=document.getElementById('tab');
+    var tHead=tab.tHead;
+    var tCells=tHead.rows[0].cells;
+    var tbody=tab.tBodies[0];
+    var tbodyRows=tbody.rows;*/
+ /*   function getData(){
+        var xml=new XMLHttpRequest();
+        xml.open('get','data.txt',false);
+        xml.onreadystatechange=function(){
+            if(xml.readyState==4&&/^2\d{2}$/.test(xml.status)){
+                data=utils.jsonParse(xml.responseText)
+            }
+        };
+        xml.send(null)
+    }
+    getData();*/
+   /* function bind(){
+        var frg=document.createDocumentFragment();
+        for(var i=0;i<data.length;i++){
+            var cur=data[i];
+            var tr=document.createElement('tr');
+            for(var key in cur){
+                var td=document.createElement('td');
+                if(key==='sex'){
+                    cur[key]=cur[key]===0?'男':'女';
+                }
+                td.innerHTML=cur[key];
+                tr.appendChild(td);
+            }
+            frg.appendChild(tr);
+        }
+        tbody.appendChild(frg);
+        frg=null;
+    }*/
+/*function bind(){
+    var str='';
+    for(var i=0;i<data.length;i++){
+        var cur=data[i];
+        str+='<tr>\
+        <td>'+cur.name+'</td>\
+                <td>'+cur.age+'</td>\
+                <td>'+cur.score+'</td>\
+                <td>'+cur.sex+'</td>\
+                </tr>';
+    }
+    tbody.innerHTML=str;
+}
+    bind();
+    function change(){
+        for(var i=0;i<tbodyRows.length;i++){
+            tbodyRows[i].className='bg'+i%2;
+        }
+    }
+    function sort(n){
+        for(var i=0;i<tCells.length;i++){
+            tCells[i].flg=i==n?tCells[i].flg*-1:-1;
+        }
+        var ary=utils.makeArray(tbodyRows);
+        ary.sort(function(a,b){
+            a= a.cells[n].innerHTML;
+            b= b.cells[n].innerHTML;
+            if(isNaN(a)||isNaN((b))){
+                return a.localeCompare(b)*tCells[n].flg;
+            }
+            return (a-b)*tCells[n].flg;
+        });
+        var frg=document.createDocumentFragment();
+        for(var i=0;i<tCells.length;i++){
+            frg.appendChild(ary[i]);
+        }
+        tbody.appendChild(frg);
+        change();
+    }
+    for(var i=0;i<tCells.length;i++){
+        if(tCells[i].className==='cursor'){
+            tCells[i].原生Js=i;
+            tCells[i].flg=-1;
+            tCells[i].onclick=function(){
+               sort(this.原生Js)
+            }
+        }
+    }*/
+</script>

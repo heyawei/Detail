@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+ var n=[10,20,30,40];//基本数据类型是对值的操作，引用数据类型，是对地址的操作；
+    function fn(n){
+        n[0]=100;
+        alert(n) ;
+        n=14;
+        alert(n)
+    }
+    fn(n);
+    alert(n);
+</script>
+</body>
+</html>

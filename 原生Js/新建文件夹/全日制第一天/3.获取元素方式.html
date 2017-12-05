@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .p{
+            width: 100px;
+            height:100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<ul id="box">
+    <li ></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<script>
+  /*  var oUl = document.querySelectorAll('#ul1');获取的节点集合*/
+  /*var oUl = document.querySelector('#ul1');*/
+  /*  var oUl = document.getElementById('ul1');
+    var aLi = document.getElementsByTagName('li');
+    /!*alert(aLi.length)*!/
+   function makeArray(likeArray) {
+        try {
+            var ary = [].slice.call(likeArray);
+        } catch (e) {
+            for(var i=0;i<likeArray.length;i++){
+                var cur=likeArray[i];
+                ary.push(cur)
+            }
+        }
+        return ary;
+    }
+    console.log(makeArray(aLi))
+    function child(ele){
+        var ary=[];
+        var cur=ele.childNodes;
+        for(var i=0;i<cur.length;i++){
+            var str=cur[i];
+            if(str&&str.nodeType==1){
+                ary.push(str)
+            }
+        };
+        return ary;
+    }
+    console.log(child(oUl));
+    function prev(ele){
+        if(ele.previousElementSibling){
+            return ele.previousElementSibling;
+        };
+        var pre=ele.previousSibling;
+        while(pre&&pre.nodeType!==1){
+            pre=pre.previousSibling;
+        };
+        return pre;
+    }
+    console.log(prev(aLi[1]))*/
+ /* var oBox=document.getElementById('bot');
+  var oDiv=oBox.getElementsByTagName('li');
+    console.log(oBox.children);*/
+  var oBox=document.getElementById('box');
+  var oDiv1=oBox.getElementsByTagName('li')[0];
+  var oDiv=document.createElement('p');
+    oDiv.className='p';
+ /*oBox.appendChild(oDiv)
+  oDiv.cloneNode()*/
+</script>
+</body>
+</html>

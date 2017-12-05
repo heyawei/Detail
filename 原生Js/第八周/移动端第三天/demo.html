@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <!--
+    width ->layout viewport 大部分设备上默认值是980 document.documentElement.clientWidth
+    device-width 设备宽度
+    initial-scale 初始缩放值
+    user-scalable 是否运行用户缩放页面 yes|no
+    maximum-scale 最大缩放值
+    minimum-scale 最小缩放值
+    -->
+    <style type="text/css">
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+        @media all and (max-width:640px) {/*显示区域宽度小于等于640时，条件成立*/
+            #div1{
+                background: green;
+            }
+        }
+        @media screen and (min-width: 320px) and (max-width: 414px){/*设置了一个区间，显示区域宽度在320到414之间，条件才成立*/
+            #div1{
+                width: 400px;
+            }
+        }
+        @media screen and (orientation: landscape){/*横向*/
+            #div1{
+                /*background: orange;*/
+            }
+        }
+        @media screen and (orientation: portrait) {/*竖向*/
+            #div1{
+                /*background: black;*/
+            }
+        }
+        @media all and (-webkit-device-pixel-ratio: 1) {
+            #div1{
+                /*background: url(../@x1.jpg) no-repeat;*/
+                background: red;
+            }
+        }
+        @media all and (-webkit-device-pixel-ratio: 2) {
+            #div1{
+                /*background: url(../@x2.jpg) no-repeat;*/
+                background: green
+            }
+        }
+        @media all and (-webkit-device-pixel-ratio: 3) {
+            #div1{
+                /*background: url(../@x3.jpg) no-repeat;*/
+                background: purple
+            }
+        }
+        /*all 所有类型的设备
+          screen 显示器
+          print 打印机
+
+          width:显示区域宽度
+          height:显示区域高度
+          device-width 设备宽度
+          device-height 设备高度
+        */
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>

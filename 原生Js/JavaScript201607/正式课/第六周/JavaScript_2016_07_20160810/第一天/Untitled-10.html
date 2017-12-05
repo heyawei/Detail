@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div{height: 100px;width: 100px;background: red;}
+    </style>
+</head>
+<body>
+<div id="div">111</div>
+</body>
+</html>
+
+<script>
+    function on(ele,type,fn){
+		
+        if(!ele["aEvent"+type]){
+            ele["aEvent"+type]=[];
+            ele.attachEvent("on"+type,function(){run.call(ele)});
+        }else{
+			var a=ele["aEvent"+type];
+			for(var i=0;i<a.length;i++){
+				if(a[i]==fn)return;
+			}
+			a.push(fn);
+        }
+    }
+    function run(){
+        var e =window.event;
+        var type = e.type;
+        var a = this["aEvent"+type];
+        if(a){
+            e.target = e.srcElement;
+            e.pageX = (document.documentElement.scrollLeft||document.body.scrollLeft)+ e.clientX;
+            e.pageY = (document.documentElement.scrollTop||document.body.scrollTop)+ e.clientY;
+            e.stopPropagation = function(){
+                e.cancelBubble = true;
+            };
+            e.preventDefault = function (){
+                e.returnValue = false;
+            };
+            for(var i = 0;i< a.length;i++){
+                if(typeof a[i]=="function"){
+                    a[i].call(this,e)
+                }else{
+                    a.splice(i,1);
+                    i--;
+                }
+            }
+        }
+    }
+    function off(ele,type,fn){
+        if(ele.removeEventListener){
+            ele.removeEventListener(type,fn,false)
+        }else{
+            var a = ele["aEvent"+type];
+            if(a){
+                for(var i=0;i< a.length;i++){
+                    if(a[i]==fn){
+                        a[i]=null;
+                        return;
+                    }
+                }
+            }
+        }
+    }
+</script>
+<script>
+    var div = document.getElementById("div");
+    function fn1(){console.log(1)}
+    function fn2(){console.log(2)}
+    var i=0;
+    function fn3(){console.log(3);
+        /*i++;
+        if(i==3){ off(div,"click",fn1);
+            off(div,"click",fn2)}*/
+    }
+    function fn4(){console.log(4)}
+    function fn5(){console.log(5)}
+    function fn6(){console.log(6)}
+    function fn7(){console.log(7)}
+    on(div,"click",fn1);
+    on(div,"click",fn2);
+    on(div,"click",fn3);
+    on(div,"click",fn4);
+    on(div,"click",fn5);
+    on(div,"click",fn6);
+    on(div,"click",fn7)
+</script>

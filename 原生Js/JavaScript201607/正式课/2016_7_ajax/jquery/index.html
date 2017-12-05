@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <script>
+        // DOM树(html结构)加载之后执行
+        $(document).ready(function () {
+            console.log(1);
+        });
+
+        // html中所有资源(图片,音频,视频,js,css)全部加载完成执行
+        $(window).load(function () {
+            console.log(2);
+        });
+
+        // 面试题 自己实现ready事件
+        var ready = (function () {
+            // 页面是否已经加载完成
+            // 默认为false 表示页面没有加载完成
+            var isReady = false;
+
+            // document.readyState的三个值
+            var PAGE_STATE = {
+                LOADING: 'loading',// html正在加载
+                INTERACTIVE: 'interactive',// html结构已经加载完成,但是图片,iframe...还没没有加载完成
+                COMPLETE: 'complete'// 所有资源全部记载完成
+            };
+            // 判断浏览器,利用惰性函数
+            // 标准浏览器
+            if (window.addEventListener) {
+                return function (callback) {
+                    // 执行之前先判断页面的状态是否已经为complete或者isReady为true
+                    if (isReady || document.readyState === PAGE_STATE.COMPLETE) {
+                        // 直接执行callback
+                        // 因为此时页面已经完全的加载完成,没有必要在监听事件,所以直接执行callback
+                        callback();
+                        return;
+                    }
+                    // 如果页面没有加载完成,则注册相应的事件
+                    window.addEventListener('DOMContentLoaded', function () {
+                        // html结构加载完成之后,将isReady设置true.表示html结构已经加载完成
+                        isReady = true;
+                        // 执行回调函数
+                        callback();
+                    }, false);
+                }
+
+            } else {
+                // 低版本ie
+                // 每当document.readyState改变时 执行此方法
+                return function (callback) {
+                    // 判断html结构是否加载完成 或者 页面已经全部加载完成
+                    if (isReady || document.readyState === PAGE_STATE.COMPLETE) {
+                        // 直接执行callback
+                        callback();
+                        return;
+                    }
+                    // 注册相应事件
+                    document.onreadystatechange = function () {
+                        // 判断readyState是否为interactive或者complete,如果readyState为两个中的其中一个,则表示html结构已经加载完成
+                        if (document.readyState === PAGE_STATE.INTERACTIVE || document.readyState === PAGE_STATE.COMPLETE) {
+                            // 将isReady设置为true.标识html结构已经加载完成
+                            isReady = true;
+                            // 将事件事件设置为null,为了防止callback执行两遍
+                            document.onreadystatechange = null;
+                            // 执行callback
+                            callback();
+                        }
+                    }
+                }
+
+            }
+        })();
+
+        ready(function () {
+            console.log(3)
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

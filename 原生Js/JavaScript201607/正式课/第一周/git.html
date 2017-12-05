@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>git</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            width: 500px;
+            height: 200px;
+            margin:  50px auto;
+
+            background-color: red;
+            box-shadow: 20px 20px 20px 20px blue inset;
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+</body>
+</html>
+<script>
+ /*
+        github
+*      1 先去github.com上去注册一个用户名
+*      2 github是一个全球的开源,可以把自己代码放到github上一份
+ *
+ * */
+
+
+/*
+*    git: 是一个版本管理工具
+*    git clone 地址(群公告) 把在github上的远程仓库克隆到本地一份  ==> 第一次执行就可以
+*    git pull origin master 更新主仓库  ==> 每天等老师上传讲义之后回家执行这条命令.
+*    提交代码:  以后可能需要把自己写的代码放到自己的github上仓库
+*    git add -A  把要提交的文件添加到暂存区 ==> 这会只是提交之前的准备工作,这会还没有版本号
+*    git commit -m"本次提交的描述" 描述一般写本次提交做了什么事或者完成的是哪个需求。这个命令执行之后就会生成一个新的版本号了,有版本号记录可以做到代码回滚
+*    git push origin master 把代码文件提交到github远程仓库中 ==> 为了让远程仓库保持和我本地代码保持一致，这样其他人就可以更新到我的最新的代码 提交过程中会输入用户名和密码，输入密码的时候没有显示
+*    git fetch -v 查看本地仓库和远程仓库的连接
+*
+*
+*    //把自己的本地文件夹变成git仓库，并且和远程git仓库连接
+*    git init ==> 在文件夹里面执行  把这个文件夹初始化成一个本地仓库,就会生成一个默认的本地隐藏文件夹.git
+*    git remote add origin +仓库地址  和这个地址代表的远程仓库连接
+*    git pull origin master  ==> 更新远程仓库的内容
+*    init + remote + pull == clone
+*
+*
+*    如果有不想上传到github上的文件需要利用.ignore，然后把不上传的文件名字放到.ignore就可以
+*使用GitHub发布项目：
+* GitHub：http：//github.com/一个网站，网站搭建了一个供用户管理代码的平台（而且是基于GIT操作进行管理的一个平台）
+* GitHub在全世界都是比较权威的，我们前端开发工程师所需要的框架，类库，插件的源代码基本上都在GitHub上有托管。
+* GitHub还有一个作用：可以在这个平台上发布前端的项目文件。GitHub本身就是一个资源文件托管的平台，我们把项目资源文件上传到这个平台下，平台帮我们发布，以后只要输入对应的网址就可以把这个平台中托管文件的源代码返回到用户的客户端进行渲染。
+* README.MD文件是对仓库的说明，里面的内容采用MARK语法进行编写。
+*
+* 使用GitHub发布项目，创建自己的静态博客：
+* 1，创建一个新的仓库（新仓库默认只有一个主分支master，如果托管的是源代码的话，都是把源代码上传到master这个分支下-》$ git pull origin master）
+* 2,基于当前的仓库发布我们的博客
+* Setting->Options->GitHub Pages->Launch Automatic page generator(按钮)->Continue to Layouts->PubLish Page
+* 3,为了方便后期的管理
+* 4，把自己开发的项目上传到仓库的gh-pages分支下
+* 5，锦上添花；把地址生成二维码，让别人扫码访问
+* 草料：
+*
+* */
+</script>

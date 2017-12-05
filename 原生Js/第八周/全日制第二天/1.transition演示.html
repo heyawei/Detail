@@ -1,0 +1,52 @@
+ <!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>过渡动画</title>
+    <style type="text/css">
+      #div1{
+            width: 200px;
+            height: 200px;
+            background: red;
+            transition:move 1s linear 0s;
+            /*!*执行两次
+            划过时 200->400
+            划出时 400->200
+            *!*/
+        }
+  /* #div1:hover{
+            width: 400px;
+            -webkit-transition-property: width;/!*谷歌浏览器*!/
+            -moz-transition-property: width;/!*火狐浏览器*!/
+            -ms-transition-property: width;/!*ie浏览器*!/
+            -o-transition-property: width;/!*欧朋*!/
+            transition-property: width;/!*标准写法*!/
+
+            transition-duration:1s;/!*运行时间*!/
+            transition-timing-function: ease-in-out;/!*运行速度*!/
+            transition-delay:1s;/!*延迟时间*!/
+        }*/
+   /*  #div1:hover{
+            width: 400px;
+            height: 500px;
+            -webkit-transition: right 1s linear 0s, height 2s ease ;
+            -moz-transition:right 1s linear 0s, height 2s ease ;
+            -ms-transition: right 1s linear 0s, height 2s ease ;
+            -o-transition: right 1s linear 0s, height 2s ease ;
+            transition: right 1s linear 0s, height 2s ease ;
+
+        }*/
+
+
+    </style>
+</head>
+<body>
+   <div id="div1"></div>
+</body>
+</html>
+<script>
+    var oDiv = document.querySelector("#div1");
+    oDiv.addEventListener("webkitTransitionEnd",function(){
+        console.log(1);
+    },false)
+</script>

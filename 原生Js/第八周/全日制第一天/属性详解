@@ -1,0 +1,101 @@
+一、border-radius属性
+CSS3圆角只需设置一个属性：border-radius（含义是"边框半径"）。你为这个属性提供一个值，就能同时设置四个圆角的半径。所有合法的CSS度量值都可以使用：em、px、百分比等等。
+border-radius可以同时设置1到4个值。（想想我们之前的margin与padding）如果设置1个值，表示4个圆角都使用这个值。如果设置两个值，表示左上角和右下角使用第一个值，右上角和左下角使用第二个值。如果设置三个值，表示左上角使用第一个值，右上角和左下角使用第二个值，右下角使用第三个值。如果设置四个值，则依次对应左上角、右上角、右下角、左下角（顺时针顺序）。
+border-radius还可以用斜杠设置第二组值。这时，第一组值表示水平半径，第二组值表示垂直半径。第二组值也可以同时设置1到4个值，应用规则与第一组值相同。
+二、单个圆角的设置
+除了同时设置四个圆角以外，还可以单独对每个角进行设置。对应四个角，CSS3提供四个单独的属性：
+　　* border-top-left-radius
+　　* border-top-right-radius
+　　* border-bottom-right-radius
+　　* border-bottom-left-radius
+这四个属性都可以同时设置1到2个值。如果设置1个值，表示水平半径与垂直半径相等。如果设置2个值，第一个值表示水平半径，第二个值表示垂直半径。
+
+一、线性渐变：是沿着一根轴线（水平或垂直）改变颜色，从起点到终点颜色进行顺序渐变（从一边拉向另一边）。可以设置水平和垂直位置为百分比，或以像素为单位，或在水平方向上可以使用left/center/right，在垂直方向上可以使用top/center/bottom。位置起始于左上角。如果你不指定水平或垂直位置，它将默认为center。
+线性渐变在 Mozilla 下的应用
+　　语法：-moz-linear-gradient( [<point> || <angle>,]? <stop>, <stop> [, <stop>]* )
+　　参数：其共有三个参数，第一个参数表示线性渐变的方向，top 是从上到下、left 是从左到右，如果定义成 left top，那就是从左上角到右下角。第二个和第三个参数分别是起点颜色和终点颜色。你还可以在它们之间插入更多的参数，表示多种颜色的渐变。
+
+二、线性渐变在 Webkit 下的应用
+　　语法：
+-webkit-linear-gradient( [<point> || <angle>,]? <stop>, <stop> [, <stop>]* )//最新发布书写语法
+-webkit-gradient(<type>, <point> [, <radius>]?, <point> [, <radius>]? [, <stop>]*) //老式语法书写规则
+　　参数：-webkit-gradient 是 webkit 引擎对渐变的实现参数，一共有五个。第一个参数表示渐变类型（type），可以是linear（线性渐变）或者radial（径向渐变）。第二个参数和第三个参数，都是一对值，分别表示渐变起点和终点。这对值可以用坐标形式表示，也可以用关键值表示，比如 left top（左上角）和left bottom（左下角）。第四个和第五个参数，分别是两个color-stop函数。color-stop 函数接受两个参数，第一个表示渐变的位置，0为起点，0.5为中点，1为结束点；第二个表示该点的颜色。
+
+三、线性渐变在 Opera 下的应用
+　　语法
+-o-linear-gradient([<point> || <angle>,]? <stop>, <stop> [, <stop>]); /* Opera 11.10+ */
+　　参数：-o-linear-gradient 有三个参数。第一个参数表示线性渐变的方向，top 是从上到下、left 是从左到右，如果定义成 left top，那就是从左上角到右下角。第二个和第三个参数分别是起点颜色和终点颜色。你还可以在它们之间插入更多的参数，表示多种颜色的渐变。
+
+四、线性渐变在 Trident (IE) 下的应用
+　　语法：
+filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#1471da, endColorstr=#1C85FB);/*IE<9>*/
+-ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#1471da, endColorstr=#1C85FB)";/*IE8+*/
+　　IE依靠滤镜实现渐变。startColorstr表示起点的颜色，endColorstr 表示终点颜色。GradientType 表示渐变类型，0 为缺省值，表示垂直渐变，1 表示水平渐变。
+
+CSS3：radial-gradient，径向渐变的使用方法
+径向渐变不同于线性渐变，线性渐变是从“一个方向”向“另一个方向”的颜色渐变，而径向渐变是从“一个点”向四周的颜色渐变。其语法如下：
+background: radial-gradient(center, shape, size, start-color, ..., last-color);
+center：渐变起点的位置，可以为百分比，默认是图形的正中心。
+shape：渐变的形状，ellipse表示椭圆形，circle表示圆形。默认为ellipse，如果元素形状为正方形的元素，则ellipse和circle显示一样。
+size：渐变的大小，即渐变到哪里停止，它有四个值。 closest-side：最近边； farthest-side：最远边； closest-corner：最近角； farthest-corner：最远角
+repeating-radial-gradient() 函数用于重复径向渐变
+div { background: repeating-radial-gradient(red, yellow 10%, green 20%); }
+
+
+text-shadow是给文本添加阴影效果，box-shadow是给元素块添加周边阴影效果。
+基本语法是{box-shadow:[inset] x-offset y-offset blur-radius spread-radiuscolor}
+
+对象选择器 {box-shadow:[投影方式] X轴偏移量 Y轴偏移量阴影模糊半径 阴影扩展半径 阴影颜色}
+
+box-shadow属性的参数设置取值：
+
+阴影类型：此参数可选。如不设值，默认投影方式是外阴影；如取其唯一值“inset”，其投影为内阴影；
+
+X-offset:阴影水平偏移量，其值可以是正负值。如果值为正值，则阴影在对象的右边，其值为负值时，阴影在对象的左边；
+
+Y-offset:阴影垂直偏移量，其值也可以是正负值。如果为正值，阴影在对象的底部，其值为负值时，阴影在对象的顶部；
+
+阴影模糊半径：此参数可选，，但其值只能是为正值，如果其值为0时，表示阴影不具有模糊效果，其值越大阴影的边缘就越模糊；
+
+阴影扩展半径：此参数可选，其值可以是正负值，如果值为正，则整个阴影都延展扩大，反之值为负值时，则缩小；
+
+阴影颜色：此参数可选。如不设定颜色，浏览器会取默认色，但各浏览器默认取色不一致，特别是在webkit内核下的safari和chrome浏览器下表现为透明色，在Firefox/Opera下表现为黑色（已验证），建议不要省略此参数。
+
+1.css3 background属性列表
+    background-color
+    background-position
+    background-size
+    background-repeat
+    background-origin
+    background-clip
+    background-attachment
+    background-image
+
+background缩写属性的顺序
+background: [background-color] [background-image] [background-repeat]
+            [background-attachment] [background-position] / [ background-size]
+            [background-origin] [background-clip];
+
+2,css3新增的backgroud-size用法
+
+    background-size: 200px;
+    background-size: 200px 100px;
+    background-size: 200px 100px, 400px 200px;//有多个图像
+    background-size: auto 200px;
+    background-size: 50% 25%;
+    background-size: contain;
+    background-size: cover;
+
+    使用<length>|<percentage>时，第一个值是指背景图像的width，第二个指背景图像的height，如果只有一个值，height就为auto
+    使用percentage注意：width和height是针对于背景区域，不是背景图像大小
+
+3,css3新增的background-origin用法
+background-origin是用来决定图片的原始起始位置。它有三个可选值content-box,padding- box,border-box(background-origin
+如果写在css中只有Opera浏览器可以识别，如果希望在火狐或者chrome或 Safari中使用，
+要使用它们浏览器的私有属性-moz-background-origin(Firefox),-webkit-background-origin(chrome,safari)，
+并且对应的值是content,padding,border,省略了-box)，即你可以选择背景图片是从内容区域开始显示，还是内边距，还是边框
+如果背景不是no-repeat的话，这个属性是无效的
+4,css3新增的background-clip用法
+ackground-clip与origin的可选择一样，也是有content- box,padding-box,border-box
+(要注意在火狐和Chrome和Safari中，需要使用私有属性，加上-mox-和 -webkit-,这里就不赘述了，
+参考解释background-clip的内容)。

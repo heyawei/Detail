@@ -1,0 +1,48 @@
+html5新特性(语义化标签) 表单的种类，表单新增属性
+css3 所有的基本属性和核心模块属性
+
+h1~h6 p ul li ol li em(斜体的形式来强调内容) strong img q(引用)
+页面结构更加清晰，更好的支持未来的浏览器，对搜索引擎非常友好
+section 一块区域 范围非常大
+header 页面头部或者一个区域头部
+footer 页面尾部或者一个区域尾部
+nav 导航
+main 主体
+article 一个独立区块 强调独立性
+aside  article主体内容的辅助信息,可有可无，比如说侧边栏，文章中的广告，去掉后对主体内容不会有影响
+figure 表示插画
+figcaption 表示图题，对图片的描述
+
+search 搜索输入框 在键盘的右下角按钮变成search按钮
+tel 手机号码输入框 手机上变成数字键盘
+url
+email 邮件地址
+number 数字输入框
+placeholder 设置输入前的提示信息，当输入时，提示信息消失
+autocompelete 是否保存输入的信息
+autofocus 光标聚焦
+required 不能为空
+pattern 通过正则设置验证的规则
+form 表单元素可以放在任意位置
+formnovalidate 所有表单元素不需要验证直接可提交 作用在submit类型的提交按钮上
+novalidate 所有表单元素不需要验证直接可提交 作用在form表单元素上
+
+<p data-zf-px="peixun" id="op"></p>
+op.dataset.zf
+op.dataset.zfPx
+
+ var op = document.querySelector("#op");
+op.classList.add("a1"); 添加类名
+op.classList.remove("aa");移除类名
+op.classList.toggle("c1");如果有这个类名则移除，没有则添加
+
+hidden 隐藏
+contenteditable="true" 文本可编辑
+window.document.designMode = "on"; 页面上所有的内容都可编辑
+
+
+
+
+
+
+

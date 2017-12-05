@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrap{
+            list-style: none;
+            background: pink;
+            width: 500px;
+            height: 1000px;
+            display: flex;
+            /*flex-direction: row;*/
+            /*flex-wrap: wrap-reverse;*/
+            flex-flow: row wrap;
+
+            justify-content: center;
+            align-content:flex-start;
+        }
+        .wrap li{
+            background: green;
+            margin: 10px;
+            height: 100px;
+            width: 100px;
+            color: #fff;
+            border: 1px solid orange;
+        }
+        /*.wrap li:nth-child(3){*/
+            /*align-self: center;*/
+        /*}*/
+        .wrap li:nth-child(2){
+            order: -1;
+        }
+    </style>
+</head>
+<body>
+<ul class="wrap">
+    <li>1111</li>
+    <li>2222</li>
+    <li>3333</li>
+    <li>4444</li>
+    <li>5555</li>
+    <li>6666</li>
+    <li>7777</li>
+    <li>8888</li>
+    <li>9999</li>
+    <li>1100</li>
+    <li>1200</li>
+    <li>7777</li>
+    <li>8888</li>
+    <li>9999</li>
+    <li>1100</li>
+    <li>1200</li>
+</ul>
+</body>
+</html>

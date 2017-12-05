@@ -1,0 +1,48 @@
+<!DOCTYPE html
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title>本地存储</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    * 在客户端运行的JS是不能操作用户电脑磁盘中的文件的（保护客户端运行的安全）
+    * JS中的本地存储：
+    * 使用JS向浏览器某一个位置中存储一些内容，浏览器即使关闭了，存储的信息也不会销毁，当在重新登录浏览器的时候依然可以获取到上一次存储的信息
+    * 本地存储的方案：
+    * 传统 方案：
+    * -》cookie：把信息存储到客户端的浏览器中（但是项目服务器端也是可以获取COOKIE）；
+    * -》session：把信息存储到服务器上的（服务器存储）
+    *
+    * HTML5：webStorage
+    * ->localStorage：永久存储到客户端的本地。
+    * ->sessionStorage:信息的会话存储，会话窗口存在信息也会存在，会话窗口关闭信息就消失了。
+    *
+    * 2：cookie localStorage sessionStorage
+    * webStorage：
+    * setItem（[key],[value]）:向客户端的本地存储一条记录，存储的[value]需要是字符串格式的，如果编写的不是字符串，浏览器也会默认转化为字符串然后在进行存储，同源下存储的[key]是不会重复的，如果之前有的话，是把存储的信息值进行修改。
+    * getItem([key]):获取之前存储的值
+    * removeItem([key]):移除key对应的存储记录
+    * clear（）：把当前源下的所有的存储的记录都移除掉。
+    *
+    * localStorage属于永久存储到本地，不管是刷新页面还是关掉浏览器，存储的内容都不会消失，只有我们自己手动的去删除才会消除（不是杀毒软件还是浏览器自带的清除历史记录功能都不能把localStorage存储的内容移除掉）。
+     * sessionStorage属于临时的会话存储，只要当前的页面不关闭，信息就可以存储下来，但是页面一旦关闭，存储的信息就会清除，（F5刷新页面只是把当前的DOM结构进行重新的渲染，会话并没有关闭）
+     * escape&&unescape可以对中文的字符串进行编码和解码，防止存储传递过程中出现乱码，除此之外还有很多。
+     * cookie和localStorage的区别：
+     * cookie存储内容的大小限制一般同源下只能存储4KB的内容，localStorage存储的内容也有大小限制，一般同源下只能存储5KB
+     * cookie存储的内容是有过期时间的，而localStorage是永久存储到本地，使用杀毒软件或者浏览器自带的清除垃圾的功能都可能会把存储的cookie删除掉。
+     * 用户可能出于安全的角度禁用cookie（无痕浏览器），但是不能禁止localStorage 。
+     * localStorage：在pc端我们可以用其存储 某一个JS或者Css中的源代码；还可以把一些不经常更新的数据存储到本地，存储的时候可以设置一个存储的时间
+     * 本地存储都是明文存储：
+     * 对于重要的信息我们一般不要存储到本地，如果非要存储的话我们需要把存储的信息进行加密
+     * 可逆转加密：加密完成还可以解密回来。
+     * 不可逆转加密：
+      * EJS模板引擎：1模板引擎数据绑定。2制作EJS渲染的模板：在原有的HTML结果基础上把我们的数据嵌套过来，EJS语法规定了我们需要编写的JS代码写在<%%>即可，需要在模板中输入一些内容，把需要输出的内容写在<%=%>
+   * */ 
+</script>

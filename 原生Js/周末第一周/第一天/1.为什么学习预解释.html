@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="按钮1"/>
+<input type="button" value="按钮2"/>
+<input type="button" value="按钮3"/>
+<input type="button" value="按钮4"/>
+<script>
+    //需求：点击任何一个按钮，让所有的按钮都变红
+    var aBtn=document.getElementsByTagName('input');
+//点击弹出对应的索引
+    for(var i=0;i<aBtn.length;i++){
+        aBtn[i].index=i;
+        aBtn[i].onclick=function(){
+            alert(this.index)
+        }
+    }
+
+
+    //点击button按钮改变颜色
+ /*   var ary=['red','blue','black','yellow'];
+    for(var i=0;i<aBtn.length;i++){
+        aBtn[i].原生Js=i;
+        aBtn[i].onclick=function(){
+            document.body.style.background=ary[this.原生Js]
+        }
+    }*/
+    //闭包改变颜色
+   /*
+    for(var i=0;i<aBtn.length;i++){
+        (function(原生Js){
+            aBtn[原生Js].onclick=function(){
+                document.body.style.background=ary[原生Js]
+            }
+        })(i)
+    }*/
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .box{
+            border:1px solid red;
+            width: 100px;
+            height: 100px;
+            margin: 50px auto;
+        }
+        .item{
+            height: 100%;
+            background: red;
+            transition: 1s;
+
+        }
+        .item:hover{
+            /*transform:rotate(-45deg);*/
+            /*transform: translate(0,-10px);*/
+            /*transform: translate(100px) rotate(45deg)  ;*/
+            transform-origin:center;
+            transform: scale(0.5);
+        }
+
+        /*
+        rotate:正：顺时针旋转 负：逆时针旋转
+        skew(sx,sy) sx:水平方向倾斜 正：水平往左倾斜，负：水平往右倾斜
+                    sy:垂直方向倾斜 正：垂直往下倾斜  负：垂直往上倾斜
+        scale(sx,sy) 只写一个参数表示x轴，y轴缩放的倍数一样
+        translate(tx,ty) 只写一个参数表示水平方向的平移，tx是x轴方向平移，tx是y轴方向平移
+        2D方法变形时的基准点默认是元素的中心点,rotate,skew,scale这三个方法是可以改变默认的基准点，但是translate不可以改变，永远只能是元素的中心点
+        transform-origin:center center; 用来改变基准点
+        */
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="item"></div>
+</div>
+</body>
+</html>

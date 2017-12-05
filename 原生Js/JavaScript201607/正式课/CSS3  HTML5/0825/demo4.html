@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <Style type="text/css">
+
+        @keyframes move {
+            0%{
+                transform: translate(100px,100px);
+            }
+            50%{
+                transform:translate(200px,200px);
+            }
+            100%{
+                transform:translate(200px,0) ;
+            }
+        }
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle,green,orange);
+            background: -webkit-radial-gradient(circle,green,orange);
+            border-radius: 50%;
+           /* animation-name:move;
+            animation-duration: 2s;
+            animation-timing-function: linear;
+            animation-delay:1s;
+            animation-iteration-count: 2;/!*无限循环次*!/
+            animation-fill-mode: both;/!*动画结束后停留在最后一帧的位置*!/
+            animation-direction: alternate;*/
+
+            animation:move 2s 1s 2  both;
+
+            /*
+            forwards 动画结束时停留在最后一帧
+            both :动画结束时可能停留在第一帧或者最后一帧
+            backwards :动画结束后停留在开始的位置
+            */
+        }
+        #div1:hover{
+            animation-play-state: paused;
+        }
+
+    </Style>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>

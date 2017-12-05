@@ -1,0 +1,210 @@
+@charset "UTF-8";
+* {
+    word-wrap: break-word;
+}
+
+html {
+    -webkit-text-size-adjust: none;
+}
+
+body {
+    font: normal 14px / 24px "Microsoft Yahei", "冬青黑体简体中文 w3", "宋体";
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td, span {
+    padding: 0;
+    margin: 0;
+}
+
+fieldset, img, html, body, iframe {
+    border: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+address, caption, cite, code, dfn, em, strong, th, var {
+    font-weight: normal;
+    font-style: normal;
+}
+
+em, i, small, caption, th {
+    font-weight: normal;
+    font-style: normal;
+    font-size: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, em, strong, b {
+    font-weight: bold;
+    font-size: 100%;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+a img {
+    border: none;
+}
+
+a, button {
+    outline: none;
+    border: 0;
+}
+
+input, select {
+    border: 1px solid #ccc;
+}
+
+button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+textarea, input, button, select {
+    outline: 0;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    font-family: inherit;
+}
+
+textarea {
+    overflow: auto;
+    resize: none;
+}
+
+figure {
+    margin: 0;
+}
+
+/*改变谷歌滚动条的样式*/::selection {
+    background: pink;
+}::scrollbar {
+    height: 3px;
+}::-webkit-scrollbar {
+    width: 0px;
+    height: 3px;
+    background: rgba(256, 256, 256, 0);
+}::-moz-scrollbar {
+    width: 0px;
+    height: 3px;
+    background: rgba(256, 256, 256, 0);
+}::-webkit-scrollbar-button {
+    background-color: rgba(256, 256, 256, 0);
+}
+ /*背景条*/::-webkit-scrollbar-track {
+    background: rgba(256, 256, 256, 0);
+}::-webkit-scrollbar-track-piece {
+    background: rgba(256, 256, 256, 0)
+}
+ /*滚动过的背景色*/::-webkit-scrollbar-thumb {
+    background: rgba(256, 256, 256, 0);
+}
+ /*滚动条颜色*/::-webkit-scrollbar-corner {
+    background: rgba(256, 256, 256, 0);
+}::-webkit-scrollbar-resizer {
+    background: rgba(256, 256, 256, 0);
+}
+
+scrollbar {
+    -moz-appearance: none !important;
+    background: rgba(256, 256, 256, 0) !important;
+}
+
+scrollbarbutton {
+    -moz-appearance: none !important;
+    background-color: rgba(256, 256, 256, 0) !important;
+}
+
+scrollbarbutton:hover {
+    -moz-appearance: none !important;
+    background-color: rgba(256, 256, 256, 0) !important;
+}
+
+/* 隐藏上下箭头*/
+scrollbarbutton {
+    display: none !important;
+}
+
+/* 纵向滚动条宽度*/
+scrollbar[orient =
+"vertical"] {
+    min-width: 2px !important;
+}
+.head .head-one .head-left{height:0px;}
+.tinct {
+    /*background-color: rgba(87, 37, 92 ,0.1);*/
+}
+.line{
+    border-bottom:2px solid #38384F;
+}
+
+.fadeInRightBig{
+    animation: fadeInRightBig 1.3s ease-out	 0s normal;
+    -webkit-animation: fadeInRightBig 1.3s ease-out	 0s normal;
+    -moz-animation: fadeInRightBig 1.3s ease-out 0s normal;
+    -o-animation: fadeInRightBig 1.3s ease-out 0s normal;
+}
+@-webkit-keyframes fadeInRightBig
+{
+    0%{
+        -webkit-transform:translateX(800px);
+        -moz-transform:translateX(800px);
+        -o-transform:translateX(800px);
+        -ms-transform:translateX(800px);
+        transform:translateX(800px)
+    }
+    100%{
+        -webkit-transform:translateX(0);
+        -moz-transform:translateX(0);
+        -o-transform:translateX(0);
+        -ms-transform:translateX(0);
+        transform:translateX(0)
+    }
+}
+@keyframes fadeInRightBig{
+    0%{
+        -webkit-transform:translateX(800px);
+        -moz-transform:translateX(800px);
+        -o-transform:translateX(800px);
+        -ms-transform:translateX(800px);
+        transform:translateX(800px)
+    }
+    100%{
+        -webkit-transform:translateX(0);
+        -moz-transform:translateX(0);
+        -o-transform:translateX(0);
+        -ms-transform:translateX(0);
+        transform:translateX(0)
+    }
+}
+
+.icon_lists .icon{
+    font-size: 26px;
+    position: relative;
+    top: 13px;
+    left: 10px;
+}
+.icon_lists li:nth-of-type(1) i{color:lightcoral}
+.icon_lists li:nth-of-type(2) i{color:#A269B8}
+.icon_lists li:nth-of-type(3) i{color:#7EBEE9}
+.icon_lists li:nth-of-type(4) i{color:#2FC7C9}
+.icon_lists li:nth-of-type(5) i{color:#079468}
+

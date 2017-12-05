@@ -1,0 +1,25 @@
+body{width:100%;min-width:320px;/*border:1px solid green;*/}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td,span{padding:0;margin:0;}
+fieldset,img,html,body,iframe{border:0;}
+table{border-collapse:collapse;border-spacing:0;}
+ol,ul{list-style:none;}
+.conAll_nav{width:95%;height:19px;margin-left:-3%;}
+.conAll_ul{height:20px;line-height: 20px;width:100%;margin:5px 5.3%;background:#D2CECB;}
+.conAll_ul li{width:18%;display:inline-block;text-align: center;cursor:pointer;font-size:12px;color:#FFF;}
+.conAll_ul li:nth-child(1){margin-left:0%;}
+.penalty{margin-left:-2%;}
+#count-top{
+    width:100%;
+    height:350px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+.con_all{  margin-top: -4px;}
+/*列表*/
+.con_tab{width:95%;height:auto;margin:0 2%;font-size:12px;}
+.con_tab thead{width:100%;border-bottom: 3px solid #38384F;margin-bottom:5px;}
+.con_tab thead td{width:10%;height:18px;text-align: center;  color:#74808A;}
+.con_tab tbody tr{border-bottom: 2px solid #38384F}
+.con_tab tbody,.con_tab tbody tr{width:100%;height:40px;line-height:40px;text-align:center;}
+.con_tab tbody tr td{width:18%;color:#7093db;}
+.con_tab tbody tr td:nth-child(1) img{position:relative;right:2px;top:10px;}
+.con_tab tbody tr td img p{position:relative;bottom:5px;}

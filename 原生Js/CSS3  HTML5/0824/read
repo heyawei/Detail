@@ -1,0 +1,15 @@
+HTML5+CSS3+JS
+HTML5新增特性与功能
+1.结构化标签 header footer section article aside hgroup  nav figure figcaption main address
+2.功能标签
+3.新增表单类型(验证属性和方法)
+4.音视频 video audio
+5.本地存储(web Storage) - DOM Storage(localStroage和sessionStroage) ,本地数据库(web SQL Datebase),离线缓存应用
+6.File,histroy,地理位置
+7.图形界面操作 cavans,svg
+8.web socket,web workers
+
+less预习中文文档
+http://www.bootcss.com/p/lesscss/
+需要下载的软件：
+http://koala-app.com/index-zh.html

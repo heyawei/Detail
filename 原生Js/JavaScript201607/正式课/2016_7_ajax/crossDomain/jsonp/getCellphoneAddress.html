@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>获取手机号归属地</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #info {
+            padding: 10px 10px;
+            background-color: #f2faff;
+            border: 1px solid antiquewhite;
+        }
+    </style>
+    <script src="jsonp.js"></script>
+</head>
+<body>
+<input id="tel" type="tel" placeholder="请输入手机号">
+<input id="btn" type="button" value="查询">
+
+<div id="info">手机号码<strong id="text"></strong></div>
+</body>
+</html>
+<script>
+    var tel = document.getElementById('tel');
+    var btn = document.getElementById('btn');
+    var info = document.getElementById('info');
+    var text = document.getElementById('text');
+    btn.onclick = function () {
+        var telNum = tel.value;
+        if (!telNum) {
+            return;
+        }
+        jsonp('http://tcc.taobao.com/cc/json/mobile_tel_segment.htm',
+                {tel: telNum}, 'callback', function (data) {
+                    text.innerHTML = data.telString + '  ' + data.province + '  ' + data.carrier;
+                })
+    }
+</script>

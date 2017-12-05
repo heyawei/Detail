@@ -1,0 +1,201 @@
+@import (reference) "public";
+
+/*把另一个less文件导入该文件不进行变异*/
+
+html, body {
+  width: 100%;
+  height: 100%;
+  color: extract(@colorList, 1);
+  background: extract(@colorList, 2);
+  overflow: hidden;
+}
+
+a {
+  color: extract(@colorList, 1)
+}
+
+a:hover, a:active {
+  color: extract(@colorList, 1)
+}
+
+.content {
+  margin: 0 auto;
+  width: 1040px;
+}
+
+/*HEADER*/
+.header {
+  @h: 63;
+  overflow: hidden;
+  height: unit(@h, px); /*不可以@h+"PX" 这是一个字符串  所以用unit方法加上px*/
+  border: 1px solid extract(@colorList, 4);
+  background: extract(@colorList, 3);
+  h1, .nav {
+    float: left;
+  }
+  .login {
+    float: right;
+  }
+  /*LOGO*/
+  h1 {
+    margin-left: 10px;
+    width: 160px;
+    font-size: 0;
+    a {
+      display: block;
+      width: 100%;
+      height: unit(@h, px);
+      background: url("@{url}/kbs-logo.png") no-repeat left center;
+    }
+  }
+  /*NAV*/
+  .nav {
+    @h-nav: -8+@h;
+    a {
+      position: relative;
+      float: left;
+      width: 90px;
+      height: unit(-8+@h, px);
+      line-height: unit(-8+@h, px);
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      border: 4px solid transparent;
+      border-left: none;
+      border-right: none;
+
+      &:hover {
+        border-top-color: extract(@colorList, 5);
+      }
+      &.bg {
+        color: extract(@colorList, 3);
+        background: extract(@colorList, 5);
+      }
+      &.liveQQ {
+        width: unit(@h, px);
+        height: unit(@h, px);
+        border: none;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      /*下载*/
+      .downLoad, .downLoadBg {
+        position: absolute;
+        top: unit(-4+@h, px);
+        left: -15px;
+        z-index: 10;
+        width: 120px;
+        height: 160px;
+        display: none;
+        img {
+          display: block;
+          margin: 10px auto 0;
+          width: 93px;
+          height: 93px;
+        }
+        p {
+          margin-top: 0;
+          line-height: 23px;
+          .font();
+        }
+      }
+      .downLoadBg {
+        background: extract(@colorList, 3);
+        z-index: 9;
+        opacity: 0.8;
+        filter: alpha(opacity=50);
+      }
+    }
+  }
+  .login {
+    margin-right: 10px;
+    a {
+      display: block;
+      margin-top: unit((-28+@h)/2, px);
+      width: 46px;
+      height: 28px;
+      line-height: 28px;
+      color: extract(@colorList, 3);
+      background: extract(@colorList, 5);
+      border-radius: 3px;
+    }
+  }
+}
+.conBody{
+  margin:20px auto ;
+}
+.menu{
+  float: left;
+  width: 198px;
+  background: extract(@colorList,3);
+  border: 1px solid extract(@colorList,4);
+}
+
+  li{
+    position: relative;
+  }
+  a{
+    display: block;
+    padding-left: 24px;
+    border-left: 5px solid transparent;
+    height: 50px;
+    line-height: 50px;
+    .font(@v:16);
+    &:hover,&bg{
+  color:extract(@colorList,3)
+      background: extract(@colorList);
+    }
+    & .bg{
+      i{
+        display: block;
+      }
+    }
+    i{
+      display: none;
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      margin-top: -4px;
+      width: 12px;
+      height: 12px;
+      background: red;
+
+      span{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        font-size: 0;
+        border: 8px solid transparent;
+        border-left-color: extract(@colorList,5);
+
+        & .over{
+          z-index: 6;
+          left: -3px;
+
+        }
+      }
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

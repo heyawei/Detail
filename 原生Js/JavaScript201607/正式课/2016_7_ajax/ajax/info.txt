@@ -1,0 +1,35 @@
+ajax
+异步JavaScript和xml
+
+ajax的实现原理,是利用浏览器提供操作HTTP相关的API来实现.
+
+ajax -> API(应用程序编程接口) -> http
+
+XMLHttpRequest
+ActiveXObject
+
+处理浏览器兼容性,有两种方法:
+1 优雅降级 新->旧
+2 渐进增强 旧->新
+
+function test(){
+    var a=1;
+    try{
+        return a++;// 2
+    }catch(ex){
+
+    }finally{
+        a+=1;
+        console.log('finally:',a);
+    }
+    console.info('end:',a);
+};
+try语句存在finally并且try语句里含有return,return并不会被执行,但是会把将要return的结果保存起来,等到finally语句执行完成之后在return出去.
+
+结论：
+1、不管有木有出现异常，finally块中代码都会执行；
+2、当try和catch中有return时，finally仍然会执行；
+3、finally是在return后面的表达式运算后执行的.
+（此时并没有立即return运算后的值，而是先把要返回的值保存起来，不管finally中的代码怎么样，最终返回的值都不会改变，任然是之前保存的值），所以函数返回值是在finally执行前确定的；
+4、finally中最好不要包含return，否则程序会提前退出，返回值不是try或catch中保存的返回值。
+

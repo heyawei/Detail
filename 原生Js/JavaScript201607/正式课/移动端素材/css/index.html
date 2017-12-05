@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <style>
+        *{margin: 0;padding: 0}
+        /*REM:
+        当前页面中元素的REM单位的样式值
+        有些时候我们要检测当前浏览器是PC端的还是移动端的，
+        如果当前是PC端，我们访问的是移动端的，让其跳转到PC端，
+        如果当前是移动端，我们访问的是PC端的，让其跳转到移动端
+        */
+        html{font-size: 100px}
+        html,body{width: 100%;height: 100%;overflow: hidden;}
+        .box{width: 200px;height: 200px;background: green;position: absolute;top: 0;left: 0;right: 0;bottom: 0;margin: auto}
+    </style>
+</head>
+<body>
+<div class="box"></div>
+</body>
+</html>
+<script type="text/javascript" src="index.js/">
+    /*
+    * 第一步：从UI设计师拿到设计稿（PSD格式的设计稿）640*1136
+    * 第二步：在样式中给HTML设定一个fontSize的值，我们一般都设置一个比较方便后面计算的值*，例如10px,100px....这里之所以用100px,主要浏览器最小的字体大小都是12px,用10px比例计算的结果和真实UI设计稿会存在一点点的偏差。
+   *
+    * 第三步：写页面，写样式
+     * 完全按照设计搞得尺寸来写样式，此时不用管任何的事情，设计稿给你的宽度，高度，字体大小，marjin,padding的值是多少，我们就写多少，但是我们在写样式值得时候，需要把得到的像素除以100，计算出 我们的REM值，设定的也是REM的值。
+     * 注意：真实项目中外层盒子的宽度和设计稿的宽度来计算fontSize的值
+     * 根据当前屏幕宽度和设计稿宽度的比例，动态计算当前宽度下的fontSize值应该是多少，通过fontSize的值改变了，之前设定的所有REM单位的值会自动跟着放大或缩小/
+</script>

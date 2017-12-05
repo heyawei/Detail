@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        #div1{
+            width: 300px;
+            height: 200px;
+            background: linear-gradient(top,red 10%,blue 10%,blue 30%,orange 30%,orange 70% );
+            background: -webkit-linear-gradient(top,red 10%,blue 10%,blue 30%,orange 30%,orange 70%);
+            /*background: -ms-linear-gradient(top,red ,orange);*/
+            /*background: -moz-linear-gradient(top,red ,orange);*/
+            /*background: -o-linear-gradient(top,red ,orange);*/
+        }
+        /*
+        渐变过渡区
+        去掉渐变过渡区 ->只需要用另一种颜色覆盖渐变过渡区就行
+
+        */
+        #div2{
+            width: 300px;
+            height: 200px;
+            background: repeating-linear-gradient(45deg,red 0px,red 20px,orange 20px,orange 30px ,blue 30px,blue 50px);
+            background: -webkit-repeating-linear-gradient(45deg,red 0px,red 20px,orange 20px,orange 30px ,blue 30px,blue 50px);;
+        }
+    </style>
+</head>
+<body>
+<!--<div id="div1"></div>-->
+<div id="div2"></div>
+</body>
+</html>

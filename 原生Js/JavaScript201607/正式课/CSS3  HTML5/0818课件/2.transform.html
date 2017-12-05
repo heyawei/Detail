@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .container{
+            width: 200px;
+            height: 200px;
+            border:1px solid #ccc;
+            margin:100px auto;
+        }
+        .item{
+            width: 200px;
+            height: 200px;
+            background: red;
+
+
+        }
+        .item:hover{
+            /*transform:translate(100px) rotate(45deg) ;*/
+            transition: 1s;
+            /*transform: skew(15deg,30deg);*/
+            transform: translate(20px,10px);
+        }
+        /*
+        rotate()  正：顺时针 负：逆时针
+        skew(x,y) x->正 水平往左倾斜 x->负 水平往右倾斜
+                  y->正 水平往下倾斜 y->负 水平往上倾斜
+        rotate(),skew(),scale()可以改变变形的基准点，但是translate()不可以，基准点永远是元素的中心点
+        四个方法可以组合一起使用，但是有顺序问题，基准点会发生改变
+        translate(tx,ty)如果只写一个参数表示水平方向的平移，tx表示x轴方向平移，ty是y轴方向的平移
+        */
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="item"></div>
+</div>
+</body>
+</html>

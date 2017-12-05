@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+        .big {
+            width: 300px;
+            height: 300px;
+            background: url(images/pic.jpg) no-repeat;
+            background-size:cover;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            -webkit-transition:transform 1s;
+            transition:transform 1s;
+        }
+        .big:hover {
+            -webkit-transform: scale(2);
+            transform: scale(2);
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="big"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .container{
+            width: 200px;
+            height: 260px;
+            border:1px solid #ccc;
+            margin: 100px  auto;
+            transform-style: preserve-3d;
+            perspective: 300px;/*视距，到Z轴平面的距离 x轴，y轴 Z轴*/
+            /*perspective-origin: top;*/
+
+        }
+        .item{
+            width: 200px;
+            height: 260px;
+            background: red;
+            transition: 1s;
+            /*transform:perspective(800px);*/
+        }
+        .item:hover{
+            /*transform:rotateX(-45deg)*//*前后翻转 正->前翻 负->后翻*/
+            /*transform: rotateY(45deg); /!*右翻，左翻*!/*/
+            transform: scaleZ(2) rotateX(45deg);
+            /*transform: rotate3d(1,0,0,-45deg);*/
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="item"></div>
+</div>
+
+</body>
+</html>

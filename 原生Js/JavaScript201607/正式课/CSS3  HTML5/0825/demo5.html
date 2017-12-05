@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .wrap{
+            width: 1210px;
+            height: 225px;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+        #box{
+            width: 1200px;
+            height: 220px;
+            border:1px solid #ccc;
+            position: relative;
+            margin-top: 3px;
+        }
+        .line{
+            width: 365px;
+            height: 5px;
+            background: url(images/jd.png) no-repeat 0 -124px;
+            position: absolute;
+            top: -3px;
+            right: 0;
+        }
+        @keyframes move {
+            0%{
+                transform:translate(-1200px) ;
+            }
+            100%{
+                transform: translate(0px);
+            }
+        }
+        @-webkit-keyframes move {
+            0%{
+                -webkit-transform:translate(-1200px) ;
+            }
+            100%{
+                -webkit-transform: translate(0px);
+            }
+        }
+
+        #box:hover .line {
+            animation:move 0.5s 1 linear both;
+            -webkit-animation:move 0.5s 1 linear both;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div id="box">
+        <div class="line"></div>
+        <img src="images/jdLike.jpg" alt=""/>
+    </div>
+</div>
+</body>
+</html>

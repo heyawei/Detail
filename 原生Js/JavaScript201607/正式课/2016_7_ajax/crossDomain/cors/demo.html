@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var getCORS = function () {
+            if (window.XDomainRequest) {
+                return new XDomainRequest();
+            }
+            var xhr = null;
+            // 判断XMLHttpRequest实例是否含有withCredentials属性,如果该属性不为undefined 则说明该对象支持跨域资源共享.
+            if (window.XMLHttpRequest && (xhr = new XMLHttpRequest()).withCredentials !== undefined) {
+                return xhr;
+            }
+
+            throw new ReferenceError('当前浏览器不支持跨域资源共享');
+        };
+
+        var cors = getCORS();
+
+        cors.open('get', 'http://localhost:12345/cors', true);
+
+        cors.onload = function () {
+            if (cors.status === 200) {
+                console.log(cors.responseText)
+            }
+        };
+        cors.send();
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

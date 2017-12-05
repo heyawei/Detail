@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div id="div1" style="height:150px; background:red; ">div1</div>
+</body>
+</html>
+<script>
+/*function bind(ele,type,fn){
+	if(ele.addEventListener){
+		ele.addEventListener(type,fn,false);
+	}else if(ele.attachEvent){
+		ele.attachEvent("on"+type,fn);
+	}
+}
+
+
+function bind(ele,type,fn){
+	if(ele.addEventListener){
+		ele.addEventListener(type,fn,false);
+	}else if(ele.attachEvent){
+		//解决this关键字的最关键最核心的一步，有这一步，当事件触发的时候，fn里的this就会指向ele（绑定的元素）
+		//如果说不考虑移除事件绑定，则代码就可以到此结束了
+		ele.attachEvent("on"+type,function(){fn.call(ele)})
+		//ele.attachEvent("on"+type,fn);
+	}
+}
+
+*/
+function unbind(ele,type,fn){
+	if(ele.removeEventListener){
+		ele.removeEventListener(type,fn,false);
+	}else if(ele.detachEvent){
+		//因为在bind里，绑定的方法已经不是fn了（而是经过改造的fn方法），所以在这里再移除fn这个方法就没有意义 。要移除经过改造的那个fn：
+		//1、在bind方法中，把经过改造的那个fn方法起名字并且保存下来
+		//2、不但可以保存下来，还要能够在unbind里找到它
+		//2.1、找到之后要把它识出来
+		var a=ele["aBind"+type];
+		for(var i=0;i<a.length;i++){
+			if(a[i].origin==fn){
+				ele.detachEvent("on"+type,a[i]);
+				a.splice(i,1);
+				return;	
+			}
+		}
+		//ele.detachEvent("on"+type,fn);
+	}
+}
+
+function bind(ele,type,fn){
+	if(ele.addEventListener){
+		ele.addEventListener(type,fn,false);
+	}else if(ele.attachEvent){
+		//解决this关键字的最关键最核心的一步，有这一步，当事件触发的时候，fn里的this就会指向ele（绑定的元素）
+		//如果说不考虑移除事件绑定，则代码就可以到此结束了
+		
+		//保存fnTemp的方式方法是怎么样的？
+		if(!ele["aBind"+type]){
+			ele["aBind"+type]=[];
+		}
+		var a=ele["aBind"+type];
+		
+		for(var i=0;i<a.length;i++){
+			if(a[i].origin==fn)return;	
+		}
+				
+		var fnTemp=function(){fn.call(ele)};
+		fnTemp.origin=fn;//加一个origin属性，以使在unbind里可以通过此属性能够识别出这个fnTemp就是fn改造来的
+		a.push(fnTemp);
+		ele.attachEvent("on"+type,fnTemp)
+		//ele.attachEvent("on"+type,fn);
+	}
+}
+
+
+//解决执行顺序问题的，顺带也把IE的其它一些兼容问题解决了
+
+//把IE的事件绑定默认的原则推翻，然后自己重新一个程序池（事件池），把需要绑定给IE中DOM元素的方法，保存到程序池里（其实这只是实现了一个“伪”绑定），而真正绑定的是run（也就是说run方法是个协调者，是个中间人，是个秘书），当事件触发的时候，是触发的run方法，由run方法去程序池里遍历执行已经保存好的那些方法（就是遍历执行“伪”绑定的那些方法）
+function on(ele,type,fn){
+	if(!ele["aEvent"+type]){
+		ele["aEvent"+type]=[];
+		//这个判断，只有可能成立一次
+		ele.attachEvent("on"+type,function(){run.call(ele)});
+	}
+	var a=ele["aEvent"+type];
+	for(var i=0;i<a.length;i++){
+		if(a[i]==fn)return;	
+	}
+	a.push(fn);//这是最关键的一步，把方法保存到事件池中
+	//bind(ele,type,run);
+	//我们可以不需要bind和unbind方法也可以实现正确的绑定run方法，但要解决以下两个问题：
+	//1.run在被事件触发的时候，this要指向被绑定的元素ele，2.不能把run重复绑定
+	
+	//ele.attachEvent("on"+type,function(){run.call(ele)});
+}
+on(ele,"click",fn1);
+on(ele,"click",fn2);
+on(ele,"click",fn3);
+function run(e){
+	var e=e||window.event;
+	var type=e.type;
+	var a=this["aEvent"+type];
+	if(a){//为了让代码运行的更健壮，所以在确定a存在的情况下才执行下面的代码
+		for(var i=0;i<a.length;i++){
+			a[i].call(this,e);	
+			/*if(typeof a[i]=="function"){
+				a[i].call(this,e);	
+			}else{
+				a.splice(i,1);//
+				i--;	
+			}*/
+		}
+	}
+	
+}
+
+function off(ele,type,fn){
+	var a=ele["aEvent"+type]
+	if(a){
+		for(var i=0;i<a.length;i++){
+			if(a[i]==fn){
+				a.splice(i,1);
+				i--;//为什么这样不行呢，为什么在这里i--不行呢
+				return;
+				//a[i]=null
+				//return;	
+			}
+		}
+	}
+}
+
+
+var ele=document.getElementById("div1");
+function fn1(){alert(this.innerHTML+"一")}
+function fn2(){alert(this.innerHTML+"二")}
+var i=0;
+function fn3(){
+	alert(this.innerHTML+"三");
+	i++;
+	if(i==3){//当点三次的时候，在click事件上移除fn1,fn2,fn3
+		off(this,"click",fn1);	
+		off(this,"click",fn2);
+		off(this,"click",fn3);
+	}
+	//未执行off之前的数组如下这样：
+	//[fn1,fn2,fn3,fn4,fn5,fn6,fn7]
+	//run方法在遍历执行这个数组，当i是2的时候执行fn3,当fn3第三次执行的时候，off执行了三次，造成了一个结果：
+	//数组变成了：[fn4,fn5,fn6,fn7]
+	//off和run是操作同一个数组。run方法里的循环还在执行，再往下执行是要执行i==3的情况了，这会数组的第3项是fn7，
+	
+
+}
+function fn4(){alert(this.innerHTML+"四")}
+function fn5(){alert(this.innerHTML+"五")}
+function fn6(){alert(this.innerHTML+"六")}
+function fn7(){alert(this.innerHTML+"七")}
+
+on(ele,"click",fn1);
+on(ele,"click",fn2);
+on(ele,"click",fn3);
+on(ele,"click",fn4);
+on(ele,"click",fn5);
+on(ele,"click",fn6);
+on(ele,"click",fn7);
+</script>

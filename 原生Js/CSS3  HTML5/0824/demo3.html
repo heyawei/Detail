@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form action="" autocomplete="on" id="form1" >
+    <input type="text" name="xm" placeholder="请输入姓名"   required  id="oText" tabindex="2"/>
+    <!--<input type="radio"/>-->
+    <!--<input type="checkbox"/>-->
+    <!--<input type="submit"/>-->
+    <!--<input type="reset"/>-->
+    <!--<input type="button"/>-->
+    <!--<input type="search"/>-->
+    <!--<input type="tel"/>-->
+    <input type="email" name="email" autocomplete="off" required id="email" tabindex="1" autofocus/>
+    <input type="number" tabindex="3"/>
+   <!--0 <input type="range" min="0" max="100" step="5" value="50"/> 100-->
+    <!--<input type="color"/>-->
+    <!--<input type="week"/>-->
+    <input type="submit" />
+</form>
+
+<input type="search" name="search" form="form1"/>
+<span>2222</span>
+<p id="oP" contenteditable >1111</p>
+<textarea name="" id="" cols="30" rows="10" spellcheck="false"></textarea>
+<p>3333</p>
+</body>
+</html>
+<script>
+    var oText = document.getElementById("oText");
+    oText.addEventListener("invalid",fn1,false);
+    function fn1(){
+        alert(this.validity.customError );
+    }
+    oText.oninput = function(){
+        if(this.value == "王宝强"){
+            this.setCustomValidity("请不要输入广告词");
+        }else{
+            this.setCustomValidity("")
+        }
+    }
+    /*
+    * this.validity.valid  验证不通过时返回false
+    * this.validity.valueMissing  内容为空时返回的是true
+    * this.validity.typeMismatch 类型不匹配时返回true
+    * patternMismatch   正则不匹配时返回true
+    * this.validity.customError  不符合自定义规则时返回true
+    *
+    * */
+
+    var oP = document.getElementById("oP");
+    oP.dataset.spm = "7406091";
+    oP.dataset.ctrlName = "pageview";
+
+//    window.document.designMode = "on";
+</script>

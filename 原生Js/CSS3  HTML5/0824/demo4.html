@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 400px;
+            background: pink;
+            margin: 100px auto;
+        }
+        .box li{
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 20px;
+            background: green;
+            display: inline-block;
+            margin: 10px;
+            text-align: center;
+            color: #fff;
+        }
+     /*   .box :nth-child(3n){
+            background: red;
+        }
+        .box :nth-child(3n+1){
+            background: orange;
+        }*/
+        /*.box li:nth-child(1){/!*1.是.box的第一个子元素，2.这个第一个子元素的标记名是li标签*!/
+            background: red;
+        }*/
+        .box li:nth-of-type(1){
+            background: red;
+        }
+        .box :only-child(2){
+            color: palegreen;
+        }
+        .box :only-of-type{
+            color: palegreen;
+        }
+        /*
+        :nth-child(2n)所有的偶数元素 n是0开始
+        :nth-child(2n+1) 所有的奇数元素  n是0开始
+        :nth-of-type 子元素 （限定类型）
+        :first-child
+        :first-of-type
+        :last-child
+        :last-of-type
+        :only-child 只有一个子元素
+        :only-of-type 同类型的元素只有一个
+        */
+
+        div:empty{
+            height: 30px;
+            background: black;
+        }
+        /*在没有内容前一套样式,在有内容后再设置一套样式*/
+        .box li:not(.a1){/*所有的li标签（除了类名是al的这个li标签）都变成圆角*/
+            border-radius: 50%;
+        }
+        .box li[class^="zf"]{
+            background: purple;
+        }
+        #box1{
+            height: 0;
+            background: pink;
+        }
+        #box1:target{
+            height: 100px;
+        }
+        p::first-line{
+            background: orange;
+        }
+        p::first-letter{
+            font-size: 60px;
+        }
+    </style>
+</head>
+<body>
+<ul class="box">
+    <li>1</li>
+    <li class="a1 zf">2</li>
+    <li class="a2 zfpx zf">3</li>
+    <li class="zf-a3 zfpx">4</li>
+    <li class="aazfb">5</li>
+    <li class="zf">6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+<div></div>
+<div></div>
+<a href="#box1">点击</a>
+<div id="box1"></div>
+<p style="width: 200px">
+    原生javaScript、算法及编程思想、设计模式、Ajax后台技术,HTML5+CSS3移动端客户端开发，Node.js、jQuery、AngularJS、Backbone.js框架讲解！
+</p>
+</body>
+</html>

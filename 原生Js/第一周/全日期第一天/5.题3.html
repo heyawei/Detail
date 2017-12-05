@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+   /* var ary=[10,30,50];
+    function fn(n){
+        n.push(40);//10,30,50,40,
+        alert(n);
+        n=[];
+        n[n.length]=100;
+        console.log(n)//100
+    }
+    fn(ary);
+    alert(ary);*/
+    function fn(){
+       var ary=[].slice.call(arguments)
+        console.log(ary)
+    }
+    fn()
+</script>
+</body>
+</html>

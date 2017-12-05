@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style:none;
+        }
+        img{border: none}
+
+        div {
+            width: 1100px;
+            margin:0 auto;
+        }
+        div ul{
+            width: 200px;
+            /*height: 100px;*/
+            margin: 0 10px;
+            background: url("img2/default.gif")no-repeat center #cccccc;
+            float:left;
+        }
+        div ul li{
+            width:100%;
+            margin-bottom: 10px;
+        }
+        div ul img{
+            width: 100%;
+        }
+       .btn{
+           width: 80px;
+           height: 80px;
+           line-height: 80px;
+           text-align: center;
+           background: darkblue;
+           border-radius: 50%;
+           position: fixed;
+           bottom: 20px;
+           right: 10px;
+           cursor: pointer;
+           color: white;
+           font-size: 25px;
+           display: none;
+       }
+    </style>
+</head>
+<body>
+<div>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+</div>
+<div id="btn" class="btn">toTop</div>
+<script src="utils.js"></script>
+<script>
+    /*  var oDiv=document.getElementById('div') ;
+     var target=950;
+     var duration=1000;
+     var interval=30;
+     var timer=null;
+     //    var step=27;
+     //    var target=950;
+     clearInterval(timer);
+     timer=setInterval(function(){
+     var step=target/duration*interval;
+     var curLeft=utils.offset(oDiv).left;
+     if(curLeft+step>=target){
+     utils.css(oDiv,'left',target);
+     clearInterval(timer);
+     return ;
+     }
+     curLeft+=step;
+     utils.css(oDiv,'left',curLeft)
+     },interval)*/
+    /*  var oDiv=document.getElementById('div');
+     function liner(t,b,c,d) {
+     return b + c / d * t
+     }
+     var targetL=1000,targetT=500;
+     var beginL=200,beginT=100;
+     var changeL=targetL-beginL,changeT=targetT-beginT;
+     var duration=1000;
+     var time=0;
+     var timer=null;
+     clearInterval(timer);
+     */
+    var oUl = document.getElementsByTagName('ul');
+    var oLi = document.getElementsByTagName('li');
+    var oBtn = document.getElementById('btn');
+    var aImg=document.getElementsByTagName('img');
+    var timer = null;
+    var bOk = true;
+    var ary = [ {imgSrc: 'img2/1.jpg'},
+                {imgSrc: 'img2/2.jpg'},
+                {imgSrc: 'img2/3.jpg'},
+                {imgSrc: 'img2/4.jpg'},
+                {imgSrc: 'img2/5.jpg'},
+                {imgSrc: 'img2/6.jpg'}
+           ];
+
+
+    function createLi() {
+        var oLi = document.createElement('li');
+        oLi.style.height = utils.rnd(100, 180) + 'px';
+        oLi.innerHTML = '<img realImg="' + ary[utils.rnd(0, 5)].imgSrc + '">';
+        return oLi;
+    }
+    function li50() {
+        for (var i = 0; i < 50; i++) {
+            var oLi = createLi();
+            var ary = utils.makeArray(oUl);
+            ary.sort(function (a, b) {
+                return a.offsetHeight - b.offsetHeight;
+            });
+            ary[0].appendChild(oLi);
+        }
+    }
+    li50();
+    showImg();
+    function showImg() {
+        for (var i = 0; i < aImg.length; i++) {
+            var cur = aImg[i];
+            var scrollBottom = utils.win('scrollTop') + utils.win('clientHeight');
+            var imgPos = utils.offset(cur).top + cur.offsetHeight;
+            if (imgPos < scrollBottom) {
+                lazyImg(cur);
+            }
+        }
+    }
+    function lazyImg(img) {
+        if (img.loaded) return;
+        var temp = new Image;
+        temp.src = img.getAttribute('realImg');
+        temp.onload = function () {
+            img.src = this.src;
+            img.loaded = true;
+            temp = null;
+            img.parentNode.style.height = 'auto';
+        }
+    }
+    function toTop() {
+        var target = utils.win('scrollTop');
+        var duration = 1000;
+        var interval = 30;
+        var step = target / duration * interval;
+        clearInterval(timer);
+        timer = setInterval(function () {
+            var curTop = utils.win('scrollTop');
+            if (curTop <= 0) {
+                clearInterval(timer);
+                return;
+            }
+            curTop -= step;
+            utils.win('scrollTop', curTop);
+            bOk = false;
+        }, interval)
+    }
+    window.onscroll = function () {
+        var scrollBottom = utils.win('scrollTop') + utils.win('clientHeight');
+        showImg();
+        if (bOk) clearInterval(timer);
+        if (utils.win('scrollTop') > utils.win('clientHeight')) {
+            oBtn.style.display = 'block';
+        } else {
+            oBtn.style.display = 'none';
+        }
+        if (scrollBottom >= document.body.scrollHeight) {
+            li50();
+        }
+    };
+    oBtn.onclick=toTop;
+</script>
+</body>
+</html>

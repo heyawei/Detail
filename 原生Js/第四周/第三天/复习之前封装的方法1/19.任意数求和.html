@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function sum(){
+        var total=0;
+        for(var i=0; i<arguments.length; i++){
+            if(!isNaN(arguments[i])){
+                total+=Number(arguments[i])
+            }
+        }
+        return total;
+    }
+    var res=console.log(sum(1,2,5,8,4,'a'))
+</script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <script>
+        // 通过调用jquery的ajax方法实现异步请求
+        $.ajax({
+            // 是否为异步请求,默认为true
+            async: true,
+            // 在ajax的send方法执行之前调用此函数
+            // 在显示loading效果时调用的函数
+            beforeSend: function () {
+                // 显示loading效果
+            },
+            // 是否缓存该请求,默认为true
+            cache: true,
+            // 不过成功还是失败都会执行此函数
+            // 在beforeSend success error方法执行后,执行此函数
+            // 就像try catch finally中的finally一样
+            complete: function () {
+                // 隐藏loading效果
+            },
+            // ajax请求首部中content-type
+            // query默认所有异步请求都为表单提交
+            // 默认值为application/x-www-form-urlencoded(表单提交)
+            contentType: 'application/x-www-form-urlencoded',
+            // 上下文对象
+            // beforeSend complete success error这四个函数的this关键字
+            context: window,
+            // 发送的参数
+            // 可以传字符串 对象 数组 FormData(html5)
+            data: '',
+            // 将响应主体格式化为指定格式
+            // text(字符串) json(json对象) script(js脚本) xml(xml文档) html(html文档)
+            // 默认为text
+            dataType: 'text',
+            // 当ajax请求失败时执行此函数
+            // 触发情况:1 ajax请求失败 2 按照dataType格式化响应主体失败 3 请求超时
+            error: function () {
+
+            },
+            // 自定义请求首部
+            headers: {},
+            // 请求使用的http方法.默认为get方法
+            // 注意:在jquery1.9之前只用type代替此参数,1.9之后使用method
+            method: 'get',
+            // ajax请求成功执行此函数
+            success: function (data) {
+
+            },
+            // 超时毫秒数
+            // 过指定时间,服务器还没有返回http response,则触发error函数
+            // 一般设置为3秒(3000毫秒)
+            timeout: 3000,
+            // ajax请求地址,接口地址
+            url: ''
+        });
+        // 接下来的4个方法只是提供最简单的ajax请求,复杂的ajax请求请使用$.ajax方法
+
+        /**
+         * 最简单的get请求 最多接收4个参数
+         * 参数1 请求地址 必填
+         * 参数2 发送的参数 选填
+         * 参数3 回调函数 选填
+         * 参数4 dataType 选填
+         */
+        $.get('url', 'data', function (data) {
+        }, 'dataType');
+
+        /**
+         * 最简单的post请求 最多接收4个参数
+         * 参数1 请求地址 必填
+         * 参数2 发送的参数 选填
+         * 参数3 回调函数 选填
+         * 参数4 dataType 选填
+         */
+        $.post('url', 'data', function () {
+        }, 'dataType');
+
+        /**
+         * 使用get方法请求,并且把响应主体格式化为json对象
+         * 接收3个参数
+         * 参数1 请求地址 必填
+         * 参数2 发送的参数 选填
+         * 参数3 回调函数 选填
+         * 注意:
+         * 此方法相当于 $.get('url','data',function(){},'json');
+         */
+        $.getJSON('url', 'data', function () {
+        });
+
+        /**
+         * 是get方法请求,并且将响应主体格式化给js脚本并执行.
+         * 接收3个参数
+         * 参数1 请求地址 必填
+         * 参数2 回调函数 选填
+         * 注意:
+         * 该方法相当于$.get('url',undefined ,function(){},'script');
+         */
+        $.getScript('url', function () {
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: red;
+            /*transition-property:width,height;
+            transition-duration: 1s,2s;
+            transition-delay:0s;
+            transition-timing-function:ease,ease-in-out;*/
+
+            transition:all 1s cubic-bezier(.47,.88,.64,.18);
+            -webkit-transition:all 1s cubic-bezier(.47,.88,.64,.18);/*谷歌*/
+            -ms-transition:all 1s cubic-bezier(.47,.88,.64,.18);/*ie*/
+            -moz-transtion:all 1s cubic-bezier(.47,.88,.64,.18);/*火狐*/
+            -o-transition:all 1s cubic-bezier(.47,.88,.64,.18);/*欧朋*/
+            /*所有的属性执行动画的时间，延迟时间和动画类型都是相同的，如果某个属性的值（例如：transition-duration）不一样，则只能用细分的写法,transition-duration属性必须设置值*/
+
+        }
+        #div1:hover{
+            width: 300px;
+            height: 300px;
+
+        }
+    </style>
+</head>
+<body>
+<!--
+过渡动画 transition 指css属性值由起始值向结束值之间实现平滑过渡的效果
+transition-property:css属性
+要有起始值 和 结束值
+-->
+<div id="div1"></div>
+</body>
+</html>
+<script>
+    var oDiv = document.getElementById('div1');
+    oDiv.addEventListener("webkitTransitionEnd",function(){
+        console.log(1);
+    },false);
+
+</script>

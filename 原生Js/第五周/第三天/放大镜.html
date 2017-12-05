@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 500px;
+            height: 500px;
+            float: left;
+            margin: 10px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 0 5px #333;
+        }
+
+        #m {
+            width: 250px;
+            height: 250px;
+
+        }
+    </style>
+</head>
+<body>
+<div id="l">
+    <p id="m"></p>
+</div>
+<div id="div">
+    <img src="" alt="">
+</div>
+</body>
+</html>
+<script>
+var oL=document.getElementById('l');
+var oR=document.getElementById('r');
+var oM=document.getElementById('m') ;
+var oImg=oR.getElementsByTagName('img')[0];
+    oL.onmouseenter=function(){
+        oM.style.display='block';
+        oR.style.display='block';
+        oL.onmousemove=function(e){
+            e=e||window.event;
+            var l= e.clientX-oL.offsetLeft-oM.offsetWidth/2;
+            var t= e.clientY-oR.offsetHeight-oM.offsetHeight/2;
+
+        }
+    }
+</script>

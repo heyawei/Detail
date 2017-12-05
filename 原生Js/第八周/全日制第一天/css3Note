@@ -1,0 +1,59 @@
+css2选择器
+    标记选择器
+    类选择器
+    id选择器
+    交集选择器
+    并集选择器
+    后代选择器 ul li
+    子代选择器 ul>li
+    关系选择器 p+span(相邻的弟弟节点) p~span(所有的弟弟节点)
+
+nth-child 从所有的子元素查找
+nth-of-type 把所有的子元素先根据标记名分类，同种标记名算一类，然后再从同标记名里查找子元素
+:last-child 最后一个子元素
+:last-of-type 同种类型中的最后一个子元素
+:only-child 只有一个子元素
+:only-of-type 同种类型元素只有一个
+:empty 没有子元素（不包含文本，换行，空格），注释可以
+:not()否定选择器 排除某个元素 括号里写选择器
+
+E[attr=val] 只能是val
+E[attr|=val] 只能是val或者val-开头
+E[attr*=val] 属性值中包含val即可
+E[attr~=val] 可以是val或者有多个属性值，其中有一个是val
+E[attr^=val] 以val开头
+E[attr$=val] 以val结尾
+
+:target 目标伪类选择器
+跟锚点联系起来理解，可以通过:target目标伪类选择器对定位元素设置样式
+
+linear-gradient
+方向
+left 左->右
+to left 右 ->左
+left top 左上->右下
+去掉渐变过渡区 每个颜色设置起始位置和结束位置
+重复线性渐变 repeating-linear-gradient
+
+radial-gradient
+circle at 10px 10px  通过at关键词设置圆心的位置
+closest-corner at 10px 10px 最近的角
+closest-side 最近的边
+farthest-side 最远的边
+farthest-corner 最远的角（默认值）
+100px 50px at center   at关键词前面设置渐变的水平半径和垂直半径
+
+background-origin 设置背景图从哪个区域开始显示 padding-box（默认值）
+background-clip 设置背景图从哪个区域往外裁剪 border-box(默认值)
+-webkit-background-clip:text; 文本区域裁剪
+background-size 控制背景图大小
+    100px 100px
+    100% 100% 背景图大小和元素大小一样
+    contain  背景图按照原来的比例缩放，背景图一定显示完整，但是不一定铺满整个容器
+    cover   背景图按照原来的比例缩放，背景图不一定显示完整，但是一定铺满整个容器
+
+box-shadow
+  外阴影：x正->右 x:负->左  y:正->下 y:负->上
+  扩展半径 ：正->往外扩展 负->往内收缩
+  只设置扩展半径效果等同于设置边框，但是扩展半径不会算在盒子模型里
+  内阴影和外阴影偏移方向相反

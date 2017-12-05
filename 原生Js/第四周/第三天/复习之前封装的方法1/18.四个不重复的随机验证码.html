@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            background: red;
+            margin: 50px auto;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            -webkit-user-select:none ;
+        }
+    </style>
+</head>
+<body>
+<div id="div">style</div>
+<script>
+
+  /*  while(code.length<4){
+        var rnd=Math.round(Math.random()*61);
+        if(code.indexOf(str.charAt(rnd))===-1){
+            code+=str.charAt(rnd);
+        }
+    }
+    document.write(code)*/
+  var str='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  var div=document.getElementById('div');
+    div.onclick=function(){
+        var code='';
+        for(var i=0;i<4;i++){
+            var ran=Math.round(Math.random()*61);
+            var ranCharAt=str.charAt(ran);
+            code+=ranCharAt;
+            div.innerHTML=code;
+        }
+        return str;
+    }
+</script>
+</body>
+</html>

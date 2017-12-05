@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let obj = {
+        a: 'a',
+        arr: [1, 2, {
+            arro1: 'o1',
+            arro2: 'o2'
+        }]
+    };
+
+    let {a: mya, arr: [arr1, arr2, {arro1, arro2}]} = obj;
+    console.log(mya, arr1, arr2, arro1, arro2);
+</script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            width: 60px;
+            height: 60px;
+            margin: 50px auto;
+            background: url("images/yl.png") no-repeat;
+            background-position: -91px -4px;
+          -webkit-animation: move 0.4s infinite linear both;
+            animation: move 0.4s infinite linear both;
+        }
+
+        @keyframes move {
+            0% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(30deg);
+            }
+            50% {
+                transform: rotate(0deg);
+            }
+            75% {
+                transform: rotate(-30deg);
+            }
+           100% {
+                transform: rotate(0deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="wrap"></div>
+</body>
+</html>

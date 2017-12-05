@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+            width: 400px;
+            margin: 50px auto;
+        }
+        ul li{
+            width: 200px;
+            height:200px;
+            line-height: 200px;
+            background: green;
+            text-align: center;
+            font-size: 20px;
+            color: #fff;
+            margin: 10px;
+        }
+        ul li:nth-child(1){
+            border-radius: 10px 40px ;
+        }
+        ul li:nth-child(2){
+            /*border-radius: 50%; /*正圆水平半径之和等于宽度，垂直半径之和等于高度*/
+            border-radius: 100px;
+        }
+        ul li:nth-child(3){
+            /*水平椭圆：长方形*/
+            height: 100px;
+            /*border-radius: 50%;*/
+            border-radius:100px/50px;
+        }
+        ul li:nth-child(4){/*半圆*/
+            height: 100px;
+            border-radius: 100px 100px 0 0 ;/*水平半径之和等于宽度*/
+        }
+
+        ul li:nth-child(5){/*扇形*/
+            width: 100px;
+            height: 100px;
+            border-radius: 100px 0 0;/*只需要设置一个方向的半径*/
+        }
+
+        ul li:nth-child(6){
+            border: 10px solid orange;
+            border-radius: 10px 120px  10px 120px;
+        }
+        /*边框设置比较大时，会出现内圆和外圆，内圆的半径等于外圆的半径减去边框的值,如果减出的值小于等于0，则是直角*/
+    </style>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>

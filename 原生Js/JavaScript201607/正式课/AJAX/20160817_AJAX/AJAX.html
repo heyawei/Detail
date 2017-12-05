@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript"src="a.js"></script>
+<script>
+    /*
+    * JS是单线程的
+    * JS存在同步也存在异步
+    * 异步：当前的这件事情没有彻底完成，还处于等待状态，它不会继续等着，它会继续为后面服务。
+    * 同步：当前的事情如果没有做完它不会做其他的事情。
+    * JS编程异步有哪些：定时器，所有的事件绑定都是异步编程，回调函数也可以理解为异步编程，AJAX中也可以设置异步编程
+    * 定时器的等待时间写0不是立马执行，每个浏览器默认都有最小的等待时间（谷歌5~6ms）
+    *
+    * Js同步和异步
+    * send只有执行了send，当前的AJAX ，HTTP事物才开始
+    * ajax:封装一个AJAX请求数据的方法*/
+
+
+
+   function aiax(optios){
+       //参数的初始化  init parameter
+       var _default={
+           url:null,
+           type:"get",
+           dataType:"json",
+           async:true,
+           data:null,
+           success:null
+       };
+     var xhr=createXHR();
+       xhr.open("","",true);
+       xhr.onreadystatechange=function(){
+          if(xhr.readyState===4&&/^2\d{2}$/.test(xhr.status)){
+              var text=xhr.responseText;
+          }
+       };
+       xhr.send(null)
+   }
+
+    aiax({
+       url:'json/data.json',
+        async:false,
+        success:null
+    });
+    for(var key in options){
+        if(options.hasOwnProperty(key)){
+            _default[key]=options[key]
+        }
+    }
+
+
+
+
+</script>
+</body>
+</html>

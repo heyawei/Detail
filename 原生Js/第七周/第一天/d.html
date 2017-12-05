@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var xhr=createXHR();
+    function createXHR (){
+        var xhr=null;
+        flag=false;
+        ary=[
+            function(){
+                return new XMLHttpRequest;
+            },
+            function(){
+                return new ActiveXObject('Microsoft.XMLHTTP')
+            },
+            function(){
+                return new ActiveXObject('Msxm12.XMLHTTP')
+            },
+            function(){
+                return new ActiveXObject('Msxm13.XMLHTTP')
+            },
+        ];
+        for(var i=0;len=ary.length;i<len,i++){
+            var curFn=ary[i];
+            try {
+                xhr=curFn();
+                createXHR=curFn;
+                flag=true;
+                break;
+            }catch (e){
+
+            }
+        }
+        if(!flag){
+            throw new Error('')
+        }
+        return xhr;
+    }
+    console.log(xhr)
+</script>

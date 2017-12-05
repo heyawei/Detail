@@ -1,0 +1,83 @@
+在css2中所有的效果都是即时效果，没法设置匀速或减速之类的效果，css3中提供了可以设置动画效果的属性
+transition属性
+语法：当css属性值发生改变的时候，由起始指向结束值实现平滑过渡的效果
+特点：1只能设置两种状态，一个是起始状态一个是结束状态
+2触发是有条件的，通过伪类，js或者媒体查询触发，只要css属性值发生改变，则过渡动画就会被触发
+transition细分属性
+transition-property过渡属性，需要增加动画效果的css属性默认值all
+transition-duration过渡时间,必须设置
+transition-timing-function动画运行的速度
+transition简写写法
+transition:all 1s ease-in 1s
+transition:1s 只设置运行时间，其他设为默认值
+
+transform：translate（x,y）一个参数表示水平方向移动距离，两个参数x：水平方向移动距离 y:垂直方向移动的距离。
+translate（）平移时基准点永远是元素的中心点。
+这几个方法可以放在一起使用中间以空格隔开，但是注意顺序问题。
+
+
+关键帧动画:弥补了过渡动画的的缺陷，
+比如1.过渡动画只能设置两种状态，关键帧动画可以设置多种状态
+2.
+关键帧动画需要两个步骤
+
+2.通过animation调用声明的关键帧
+animation-name帧动画名称（必写）
+animation-duration动画执行的时间（必写）
+animation-timing-function:动画运行的速度，ease（默认值）
+animation-delay：延迟时间
+animation-interaction-count动画执行的次数 1 || infinite无限循环次
+animation-direction：normal|reverse|alternate交替运行|alternate-reverse反方向交替运行。
+animation-play-state：running默认值||paused动画运行的还是停止的
+3D变形
+1.transform-style：flat（默认值）|preserve-3D（3D空间展示）必须作用在变形元素的父标签上。
+2：perspective景深效果近大远小的效果，一般设置在800-2000px，作用在祖先标签上，包含父标签。
+transform：perspective（800px）直接作用在子元素上
+perspective-origin:center默认值是元素中心点，一般不用修改
+transform：translate3d(x,y,z);x：轴的移动距离， y轴移动的距离， z轴移动的距离。
+transform：translateZ()在Z轴上平移 始终垂直于x轴y轴
+transform：translateX()X轴移动的距离
+transform：translateY()Y轴移动的距离
+transform：scale3d(x y z)
+transform：scaleX（）X轴缩放倍数
+transform：scaleY（）Y轴缩放倍数
+transform：scaleZ（）单独设置不起作用，必须配合其他变形方法一起使用才能起作用。
+transform：rotate3d(rx,ry,rz,a):rx:x轴向上量坐标；ry:y轴向上量坐标；rz:z轴向上量坐标；a角度
+----------------------------------------------------------------------------------------
+1：响应式的开发的由来以及概念
+概念：就是制作一套页面，根据设备的特性（例如：页面的宽度）或者屏幕的分辨率自动地调整页面的布局，从而在各个设备上，显示成最佳的视觉效果。
+响应式开发：
+1，pc端和移动端共用一套页面适用场景：小型项目或专题页等。
+2，专门针对移动设备做的响应式页面（移动适配）
+响应式开发的四大规则：
+1解决pc端页面在设备上显示问题
+设置viewport（视口）
+概念抽象，设置简单
+2：页面布局不适用绝对宽度
+流式布局 相对单位（百分比）rem（相对于根元素字体大小），em（相对与父级元素的字体大小），float
+弹性布局 flexbox
+3引入媒体查询（@media）
+是实现响应式布局的关键，例如：能根据屏幕的宽度自动调整布局
+设备像素比
+物理像素：各个显示器上最小显示的物理单元，各个设备自己的单位
+设备独立像素：虚拟像素（理解成css像素）通过相关系统的计算，可以转化成物理像素，物理像素和CSS像素存在一定的对应关系，这就是设备像素比。
+设备像素比=物理像素/设备独立像素（在一个方向上，横向或者是竖向）
+普通屏幕 dpr<2
+高清屏幕导入》=2
+图片自适应
+max-width：100%图片的宽度大于max-width设置的值，则图片的宽度变成max-width如果小于max-width的值则显示图片自身的大小
+
+-----------------------------------------------------------------------------------------------
+
+    移动适配：就是制作一套页面，页面的图片大小，间隙发生改变，但是在比例上和设计稿是一样的。
+    设计稿一般是按照iPhone6设计的，宽度是750 之前是按照iPhone5设计的宽度是640
+    根据设备宽度，页面上所有的元素都会发生相应的改变
+    px是固定单位的，不能像pc端那样都用px作为单位，应该使用响应单位rem。
+    rem是相对于根元素的字体大小
+ 1）如何把px转为rem?
+    假如设备的宽度=设计稿的宽度（640），把根元素字体大小设成100px(目的是为了好算)。
+ 2）swiper
+ 移动端触发效果的插件
+ 轮播图 pc端 原生js实现的
+ 移动端 css3动画实现的
+ swiper

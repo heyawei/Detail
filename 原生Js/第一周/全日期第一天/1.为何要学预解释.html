@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="按钮1"/>
+<input type="button" value="按钮2"/>
+<input type="button" value="按钮3"/>
+<input type="button" value="按钮4"/>
+<script>
+    //点击任何一个按钮，让所有的按钮都变红
+    var aInput=document.getElementsByTagName('input');
+    for(var i=0; i<aInput.length; i++){
+        aInput[i].onclick=function(){
+            for(var i=0; i<aInput.length; i++){
+                aInput[i].style.background='red';
+            }
+        }
+    }
+   /* var aBtn=document.getElementsByTagName('input');
+    for(var i=0; i<aBtn.length; i++){
+        aBtn[i].index=i;
+        aBtn[i].onclick=function(){
+            alert(this.index) ;
+            this.style.backgroundColor='red'
+        }
+    }*/
+</script>
+</body>
+</html>

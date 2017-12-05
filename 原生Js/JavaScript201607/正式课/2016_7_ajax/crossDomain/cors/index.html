@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>跨域资源共享</title>
+    <script>
+        // step 1 获取cors对象
+        var getCORS = function () {
+            if (window.XDomainRequest) {
+                return new XDomainRequest();
+            }
+            var xhr = null;
+            // 判断XMLHttpRequest实例是否含有withCredentials属性,如果该属性不为undefined 则说明该对象支持跨域资源共享.
+            if (window.XMLHttpRequest && (xhr = new XMLHttpRequest()).withCredentials !== undefined) {
+                return xhr;
+            }
+
+            throw new ReferenceError('当前浏览器不支持跨域资源共享');
+        };
+
+
+        var cors = getCORS();
+
+        // step 2 调用open方法
+        cors.open('http method', 'reqeust url', 'isAsync');
+
+        // step 3 接收服务器响应
+        // 当http事务完成之后 该方法会被执行
+        // 相当于ajax的readyState为4的时候
+        cors.onload = function () {
+            if (cors.status === 200) {
+                console.log(cors.responseText);
+            }
+        };
+
+        // step  3 发送请求
+        cors.send();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

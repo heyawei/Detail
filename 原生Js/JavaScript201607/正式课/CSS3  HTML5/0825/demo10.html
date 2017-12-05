@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .stage{
+            perspective: 2000px;
+        }
+        .stage ul {
+            width: 300px;
+            height: 200px;
+            margin:300px auto;
+            position: relative;
+            list-style: none;
+            transform-style: preserve-3d;
+            animation: move 3s 2 1s;
+        }
+        .stage ul li{
+            width: 298px;
+            height: 198px;
+            line-height: 198px;
+            border:2px solid #000;
+            background: rgba(152,251,152,0.5);
+            position: absolute;
+            left:0;
+            top:0;
+            font-size: 60px;
+            color: #fff;
+            text-align: center;
+
+        }
+        .stage ul li.top,.stage ul li.bottom{
+            width: 298px;
+            height: 98px;
+            line-height: 98px;
+            top: 50px;
+        }
+        .stage ul li.left,.stage ul li.right{
+            width: 98px;
+            height: 198px;
+            line-height: 198px;
+            left: 100px;
+        }
+        .stage ul li.left {
+            transform: rotateY(-90deg) translateZ(150px);
+        }
+        .stage ul li.right{
+            transform: rotateY(90deg) translateZ(150px);
+        }
+        .stage ul li.top{
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        .stage ul li.bottom{
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+        .stage ul li.front{
+            transform: translateZ(50px);
+        }
+        .stage ul li.back{
+            transform: translateZ(-50px);
+        }
+        @keyframes move {
+            0%{
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+            100%{
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div class="stage">
+    <ul>
+        <li class="top">1</li>
+        <li class="bottom">2</li>
+        <li class="left">3</li>
+        <li class="right">4</li>
+        <li class="front">5</li>
+        <li class="back">6</li>
+    </ul>
+</div>
+</body>
+</html>

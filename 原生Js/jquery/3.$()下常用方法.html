@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li{
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+<ul id="oDiv">
+
+</ul>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+  /*  var aLi=$('li');//$().xxx(); 实例.方法名();   $.xxx() 类.方法名();
+    var ary=[12,34,54,28];
+    var obj={name:'zhufeng',age:9}
+   /!* aLi.each(function(index,item){
+        //item:原生；
+        /!*item.style.background='red';*!/
+        $(item).html('珠峰培训')
+
+    })*!/
+    $.each(obj,function(){ //原生的数组，JQ元素，对象
+        console.log(arguments)
+    });
+    /!*ary.each(function(){
+        console.log(arguments)
+    })*!/
+    /!*var person={'info':[{name:'小米',age:7},{name:'小明',age:8},{name:'小赵',age:9}]};
+    var str='';
+    for(var i=0;i<person.info.length;i++){
+        var cur=person.info[i];
+        str+=cur.name;
+    }
+    console.log(str)*!/
+ var arr='13579';
+    var str=[].slice.call(arr,0);
+    console.log(arr)*/
+    /*console.log(arr.split('').toString().replace(/\./gi,''))*/
+ /* var oDiv=document.getElementById('oDiv');
+    for(var i=0;i<9;i++){
+        for(var j=0;j<=i;j++){
+            oDiv.innerHTML+=j+'*'+i+'='+j*i+'&nbsp';
+            oDiv.style.backgroundColor='blue';
+            oDiv.style.lineHeight='40px';
+            oDiv.style.marginLeft='10px'
+        };
+        oDiv.innerHTML+='</br>'
+    }*/
+/*
+var time=new Date();
+
+ var day=time.getDay();
+switch (day){
+    case 0:
+        console.log('今天星期日');
+    case 1:
+        console.log('今天星期1');
+    case 2:
+        console.log('今天星期2');
+    case 3:
+        console.log('今天星期3');
+    case 4:
+        console.log('今天星期4');
+    case 5:
+        console.log('今天星期5');
+    case 6:
+        console.log('今天星期6');
+        break;
+}
+*/
+
+function fn(m,n){
+   return Math.round(Math.random()*(n-m+1))+m;
+};
+    console.log(fn(30,48))
+</script>
+</body>
+</html>

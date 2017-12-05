@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="box2">
+    <div>
+        <label for="">姓名：</label>
+        <input type="text" id="userName"/>
+    </div>
+    <div>
+        <label for=""> 年龄：</label>
+        <input type="text" id="userAge"/>
+    </div>
+    <div>
+        <label for="">手机号：</label>
+        <input type="text" id="userPhone"/>
+    </div>
+    <div>
+        <label for="">联系地址：</label>
+        <input type="text" id="userAddress"/>
+    </div>
+    <div>
+        <a href="javascript:;" id="submit">提交</a>
+    </div>
+</div>
+<script src="js/ajax.js"></script>
+<script>
+    var controlInfo = (function(){
+        //window.localtion.href可以用来获取地址栏的url
+        function queryURLParameter(){
+            var obj = {};
+            var curURL = window.location.href;
+            var reg = /([^?#&=]+)=([^?#&=]+)/g;
+            curURL.replace(reg,function (){
+                obj[arguments[1]] = arguments[2];
+            });
+            return obj;
+        }
+        var userName = document.getElementById('userName'),
+                userAge = document.getElementById('userAge'),
+                userPhone = document.getElementById('userPhone'),
+                userAddress = document.getElementById('userAddress'),
+                submit = document.getElementById('submit');
+
+        var urlObj = queryURLParameter();
+        var userId = urlObj.id,
+                isFlag = typeof userId === 'undefined' ? false : true;
+        if (isFlag) {
+            ajax({
+                url:'/getInfo?id=' + userId,
+                success:function (jsonData){
+                    if (jsonData && jsonData.code == 0) {
+                        var data = jsonData.data;
+                        userName.value = data.name;
+                        userAge.value = data.age;
+                        userPhone.value = data.phone;
+                        userAddress.value = data.address;
+                    }
+                }
+            })
+        }
+        function bindEvent(){
+            submit.onclick = function (){
+                var obj = {
+                    "name":userName.value,
+                    "age":userAge.value,
+                    "phone":userPhone.value,
+                    "address":userAddress.value
+                };
+                if (isFlag) {
+                    obj.id = userId;
+                    ajax({
+                        url:'/updateInfo',
+                        type:'post',
+                        data:JSON.stringify(obj),
+                        success:function (jsonData) {
+                            if (jsonData && jsonData.code == 0) {
+                                window.location.href = 'index.html';
+                                return;
+                            }
+                            alert(jsonData.msg);
+                        }
+                    });
+                    return;
+                }
+                ajax({
+                    url:'/addInfo',
+                    type:'post',
+                    data:JSON.stringify(obj),
+                    success: function (jsonData) {
+                        if (jsonData && jsonData.code == 0) {
+                            //->增加成功后跳转回首页
+                            window.location.href = 'index.html';
+                        }
+                    }
+                });
+            }
+        }
+        return {
+            init: function () {
+                bindEvent();
+            }
+        }
+    })();
+    controlInfo.init();
+</script>
+</body>
+</html>

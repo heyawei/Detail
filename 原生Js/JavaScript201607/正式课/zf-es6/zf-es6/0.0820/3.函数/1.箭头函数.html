@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let func = function (param) {
+        console.log('func', param);
+    };
+
+    let arrowFunc = (param) => {
+        console.log('arrow func', param);
+    }
+
+    let aFunc = (x) => x+1;
+
+//    func(1);
+//    arrowFunc(2);
+
+//    console.log(aFunc('x'));
+
+    let arr = [1, 2, 3];
+    let newArr = arr.map(function (item, index, array) {
+        return item * item;
+    });
+    console.log(newArr);
+
+    let newArr2 = arr.map(item => item * item)
+    console.log(newArr2);
+
+
+
+
+
+
+</script>
+</html>

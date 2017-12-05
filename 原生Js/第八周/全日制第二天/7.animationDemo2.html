@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .wrap{
+            width: 1200px;
+            height: 220px;
+            padding: 3px 3px 3px 0;
+            position: relative;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+        .item{
+            height: 220px;
+            width: 1200px;
+            border:1px solid #ccc;
+        }
+        .line{
+            width: 365px;
+            height: 6px;
+            background: url("images/jd.png") 0 -124px;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        .wrap:hover .line{
+            -webkit-animation: move 1s 1 both;
+            animation: move 1s 1 both;
+        }
+        @-webkit-keyframes move {
+            0%{
+                -webkit-transform:translate(-1200px);
+                transform:translate(-1200px)
+            }
+            100%{
+                -webkit-transform:translate(0px);
+                transform:translate(0px);/*没有设置translate平移值的位置*/
+            }
+        }
+        @keyframes move {
+            0%{
+                -webkit-transform:translate(-1200px);
+                transform:translate(-1200px)
+            }
+            100%{
+                -webkit-transform:translate(0px);
+                transform:translate(0px);/*没有设置translate平移值的位置*/
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="line"></div>
+        <div class="item"><img src="images/jdLike.jpg" alt=""/></div>
+    </div>
+</body>
+</html>

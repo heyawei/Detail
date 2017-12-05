@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+
+</div>
+</body>
+</html>
+<script src="utils.js"></script>
+<script>
+    /*
+    * 函数被调用的次数取决于函数体内被调用的次数,
+    * 回调函数也可以传参
+    * 回调函数可以改变this指向
+    * 回调函数是否有返回值，有多少返回值取决于函数被调用多少次
+     *
+     * item:代表数组里面的内容，index代表索引，input：代表原始数组;
+     * 1:回调函数被传了三个参数
+     * 2回调函数可以改变this指向
+     * 回调函数没有返回值，forEach没有返回值
+     * forEach：两个参数，第二个参数没有写默认是window
+     * myForEach:第一个参数是改变this指向，*/
+   // var ary=[12,32,45,34];
+  /*  Array.prototype.myForEach=function(callback,content){
+        content=content||window;
+        if('forEach'in Array.prototype){
+            this.forEach(callback,content);
+            return ;
+        }
+        for(var i=0;i<this.length;i++){
+            callback.call(content,this[i],i,this)
+        }
+    };
+    var res=  ary.forEach(function(item,原生Js,input){
+        console.log(this)
+    },obj);
+    console.log(res)*/
+
+
+
+/*  Array.prototype.myMap=function(callback,content){
+ content=content||window;
+ if('myMap'in Array.prototype){
+ this.myMap(callback,content);
+ return ;
+ }
+ for(var i=0;i<this.length;i++){
+ callback.call(content,this[i],i,this)
+ }
+ };
+ var res=  ary.myMap(function(item,原生Js,input){
+ console.log(this)
+ },obj);
+ console.log(res)*/
+</script>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+ /*   var n=13;
+    var b=14;
+    function fn(n){
+        alert(n);
+        alert(b);
+        n=14;
+        alert(n);
+    }
+    fn(n);
+    alert(n) ;*/
+   var i=6;
+   function fn(){
+       i*=2;
+        return function(n){
+           console.log(n*(++i))
+       }
+   }
+   var f=fn();
+   f(3);
+   fn()(3);
+   f(4);
+   fn()(3);
+</script>
+</body>
+</html>
+<script>
+  /*  var str = "ABCDECDF";
+    console.log(str.indexOf("CD",1));
+console.log( String.fromCharCode(65,66,112));
+    var str = "ABCDEF";
+    console.log (str.slice(2,4));*/
+   /* var str = "ABCDECDF";
+  console.log (str.search(/cd/i));*/
+  var str = "AA BB CC DD EE FF";
+ console.log(str.split(" ",3));
+</script>

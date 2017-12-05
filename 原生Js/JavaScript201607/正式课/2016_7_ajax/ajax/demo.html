@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        // step 1 获取ajax对象
+        var getXHR4 = (function () {
+            var list = [function () {
+                return new XMLHttpRequest();
+            },
+                function () {
+                    return new ActiveXObject('Microsoft.XMLHTTP')
+                },
+                function () {
+                    return new ActiveXObject('Msxml2.XMLHTTP')
+                },
+                function () {
+                    return new ActiveXObject('Msxml3.XMLHTTP')
+                }];
+
+            var xhr = null;
+            while (xhr = list.shift()) {
+                try {
+                    xhr();
+                    break;
+                } catch (ex) {
+                    xhr = null;
+                }
+            }
+
+            if (xhr === null) {
+                throw new ReferenceError('当前浏览器不支持ajax功能');
+            }
+            return xhr;
+        })();
+
+        var xhr = getXHR4();
+
+        // step 2 调用open方法,发送请求起始行
+        /**
+         * 参数1 http方法 不区分大小写 get post head put delete
+         * ./info.txt  /2016_7_ajax/ajax/info.txt
+         * 参数2 请求地址 可以传相对路径 也可以传绝对路径
+         * 参数3 是否异步请求 默认为true
+         * 参数4 用户名,放入URL中
+         * 参数5 密码,放入URL中
+         */
+        xhr.open('http method', 'request url', 'isAsync', 'username', 'password');
+
+        // step 3 接受服务器响应
+        // 每当ajax对象的readyState属性改变时,都会执行该方法.
+        xhr.onreadystatechange = function () {
+            // 判断事务是否完成
+            if (xhr.readyState === 4) {
+                // 判断状态码是否成功
+                if (xhr.status === 200) {
+                    // 获取响应主体
+
+                    // 将响应主体转换为字符串并返回
+                    console.log(xhr.responseText);
+                    // 将响应主体转换为xml文档并返回
+                    console.log(xhr.responseXML);
+
+                    // 直接返回响应主体,不做任何转换
+                    // 兼容性 ie10+
+                    console.log(xhr.response);
+                }
+            }
+        };
+
+        // ajax对象readyState属性
+        // 标识ajax对象执行的状态
+        /**
+         * 0 默认值 标识ajax刚实例化完成,还未执行任何操作 对应xhr.UNSENT
+         * 1 调用完ajax对象open方法,自动变为1. 对应xhr.OPENED
+         * 2 开始接收http响应首部 对应xhr.HEADERS_RECEIVED
+         * 3 开始接收http响应主体 对应xhr.LOADING
+         * 4 http事务完成
+         */
+
+
+        // step 4
+        // 完整发送http request
+        // 参数重载
+        // null undefined string arraybuffer bolb FormData xml
+        // 该方法会把参数放入请求主体中. 所以get系方法不需要传参数.
+        xhr.send();
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

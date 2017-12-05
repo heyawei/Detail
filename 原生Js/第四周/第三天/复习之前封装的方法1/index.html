@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, sans-serif;
+        }
+        table{
+            width: 500px;
+            padding: 10px;
+            margin: 50px auto;
+            border: 5px solid blue;
+            box-shadow: 0 0 15px;
+            border-radius: 10px;
+        }
+        table th{
+            font-size: 25px;
+        }
+        table tr ,tbody td{
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+        }
+        .bg{
+            background: darkgreen;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <table id="box" cellpadding="0" cellspacing="0">
+        <tHead>
+            <tr>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>身高</th>
+                <th>体重</th>
+            </tr>
+        </tHead>
+        <tbody>
+            <!--<tr>
+                <td>赵老大</td>
+                <td>0</td>
+                <td>45</td>
+                <td>175</td>
+                <td>70</td>
+            </tr>-->
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+<script>
+    var box=document.getElementById('box');
+    var tHead=box.tHead[0];
+    var tCells=box.tHead.rows[0].cells;
+    var tbody=box.tBodies[0];
+    var tbodyRows=tbody.rows;
+    function getData(){
+        var xml=new XMLHttpRequest();
+        xml.open('get','data.txt',false);
+        xml.onreadystatechange=function(){
+            if(xml.readyState==4&&/^2\d{2}$/.test(xml.responseText)){
+                window.data=utils.jsonParse(xml.responseText)
+            }
+        };
+        xml.send(null);
+    };
+    function bind(){
+       var frg=document.createDocumentFragment();
+        for(var i=0;i<data.length;i++){
+            var tr=document.createElement('tr');
+            var cur=data[i];
+            for(var key in cur){
+                var td=document.createElement('td');
+                if(key==='sex'){
+                    cur[key]=cur[key]==0?'男':'女';
+                }
+                td.innerHTML=cur[key];
+                tr.appendChild(td);
+            }
+            frg.appendChild(tr);
+        }
+        tbody.appendChild(frg);
+        frg=null;
+    };
+    function change(){
+        for(var i=0;i<tbodyRows.length;i++){
+            tbodyRows[i].className='bg'+i%2;
+        }
+    };
+    function sortTbodyRows(){
+        for(var i=0;i<tCells.length;i++){
+            tCells[i].frag=i==n?tCells[i].frag*-1:-1;
+        }
+        var ary=utils.makeArray(tbodyRows);
+        ary.sort(function(a,b){
+            a= a.
+            return a.localeCompare(b)
+        })
+    }
+</script>
